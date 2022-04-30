@@ -1,0 +1,11 @@
+{
+	"stable": {
+		"1.0": {
+			"current": "1.0.1",
+			"download": "https://github.com/chris1278/statblockbridge",
+			"announcement": "https://www.phpbb.de/community/viewtopic.php?t=246200",
+			"eol": null,
+			"security": false
+		}
+	}
+}
