@@ -1,0 +1,24 @@
+services:
+    chris1278.extonoff.controller.acp:
+        class: chris1278\extonoff\controller\acp_controller
+        arguments:
+            - '@ext.manager' 
+            - '@request'
+            - '@language'
+            - '@config'
+            - '@template'
+            - '@dbal.conn'
+            - '@log'
+            - '@user'
+    chris1278.extonoff.listener:
+        class: chris1278\extonoff\event\acp_listener
+        arguments:
+            - '@ext.manager'
+            - '@template'
+            - '@language'
+            - '@config'
+            - '@log'
+            - '@user'
+        tags:
+            - { name: event.listener }
+           

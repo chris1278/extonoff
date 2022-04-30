@@ -1,0 +1,42 @@
+/**
+*
+* Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
+*
+* @copyright (c) 2022, Chris1278
+* @license GNU General Public License, version 2 (GPL-2.0)
+*
+*/
+
+fieldset {
+	border-radius: 10px;
+}
+
+legend {
+	background: inherit;
+	margin: 2px 0px 0px -11px;
+	border-top: inherit;
+	border-left: inherit;
+	border-radius: 5px 5px 0 0;
+	padding: 2px 10px;
+	top: 0;
+}
+@media (max-width: 700px){
+	legend {
+		margin: 2px 0px 0px -6px;
+		padding: 2px 5px;
+	}
+}
+label input.button1 {
+	border-radius: 5px;
+	padding: 5px;
+	font-size: 12px;
+	margin-top: .9em;
+}
+
+#extoff_infobox {
+	text-align: center;
+	background-color: #ffffff;
+	border: 1px solid #D7D7D7;
+	border-radius: 10px;
+	padding: 5px;
+}

@@ -1,0 +1,47 @@
+{% INCLUDECSS 'css/acp_extonoff.css' %}
+{% INCLUDE 'overall_header.html' %}
+
+<h1>{{ lang('EXTONOFF_TITLE') }}</h1>
+<p>{{ lang('EXTONOFF_EXPLAIN') }}</p>
+
+<fieldset>
+<legend>{{ lang('EXTONOFF_ACTIVATE_OPTION') }}</legend>
+	<dl>
+		<dt><label>{{ lang('EXTONOFF_ACTIVATE') ~ lang('COLON') }}</label><br /><span>{{ lang('EXTONOFF_ACTIVATE_EXPLAIN') }}</span></dt>
+		<dd>
+			<form method="post"><label><input class="button1 " type="submit" name="extonoff_activate_all" value="{{ lang('EXTONOFF_ALL_ACTIVATE') }}" /></label></form>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label>{{ lang('EXTONOFF_DEACTIVATE') ~ lang('COLON') }}</label><br /><span>{{ lang('EXTONOFF_DEACTIVATE_EXPLAIN') }}</span></dt>
+		<dd>
+			<form method="post" ><label><input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DEACTIVATE') }}" /></label></form>
+		</dd>
+	</dl>
+</fieldset>
+	
+<div id="extoff_infobox">
+	{{ EXTON_INFO }}
+</div>
+		
+<form id="extonoff_general"  method="post" action="{{ U_ACTION }}">
+	<fieldset>
+		<legend>{{ lang('EXTONOFF_EXTRA_BUTTONS') }}</legend>
+		<dl>
+			<dt><label>{{ lang('CHRIS1278_EXTONOFF') ~ lang('COLON') }}</label><br /><span>{{ lang('CHRIS1278_EXTONOFF_EXPLAIN') }}</span></dt>
+			<dd>
+				<label><input type="radio" class="radio" name="chris1278_extonoff" value="1" {% if CHRIS1278_EXTONOFF %}checked="checked" {% endif %}/> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="chris1278_extonoff" value="0" {% if not CHRIS1278_EXTONOFF %}checked="checked" {% endif %}/> {{ lang('NO') }} </label>
+			</dd>
+		</dl>
+	</fieldset>
+	
+	<p class="submit-buttons">
+	<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
+	<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+</p>
+
+{S_FORM_TOKEN}
+</form>
+
+{% INCLUDE 'overall_footer.html' %}
