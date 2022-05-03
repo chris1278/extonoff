@@ -48,7 +48,7 @@ $lang = array_merge($lang, [
 	'EXTONOFF_DEACTIVATION_SUCCESFULL_INFO'					=> 'Die Erweiterungen sind schon alle deaktiviert. Eine nochmalige Deaktivierung ist nicht notwendig.',
 	'EXTONOFF_DEACTIVATION_INFO'							=> 'Es können von insgesammt <b>%2$s</b> aktiven Erweiterungen <b>%1$s</b> Erweiterungen mittels dieser Erweiterung deaktiviert werden.',
 	'EXTONOFF_EXTRA_BUTTONS'								=> 'Zusatz Buttons in der Ansicht "Erweiterungen verwalten"',
-	'CHRIS1278_EXTONOFF'									=> 'Zusatz-Buttons aktivieren',
-	'CHRIS1278_EXTONOFF_EXPLAIN'							=> 'Wenn Sie diese Option aktivieren werden in der Ansicht <b>"Erweiterungen verwalten"</b> ebenfalls Buttons eingeblendet mit denen Sie dort auch alle Erweiterungen aktiveren bzw. deaktivieren können.',
+	'EXTONOFF_ENABLE_BUTTONS'									=> 'Zusatz-Buttons aktivieren',
+	'EXTONOFF_ENABLE_BUTTONS_EXPLAIN'							=> 'Wenn Sie diese Option aktivieren werden in der Ansicht <b>"Erweiterungen verwalten"</b> ebenfalls Buttons eingeblendet mit denen Sie dort auch alle Erweiterungen aktiveren bzw. deaktivieren können.',
 	'ACP_EXTONOFF_SETTING_SAVED'							=> 'Einstellungen erfolgreich gespeichert.',
 ]);

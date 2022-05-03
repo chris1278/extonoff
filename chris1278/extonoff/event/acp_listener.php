@@ -50,22 +50,22 @@ class acp_listener implements EventSubscriberInterface
 	public function extonoff_run($event)
 	{
 		$this->template->assign_vars([
-			'EXTONOFF_LISTNER_BUTTONS'		=> $this->config['chris1278_extonoff'],
-			'DISABLE_EXTONOFF'				=> ($event['u_action'] . '&action=disable-all'),
-			'ACTIVATE_EXTONOFF'				=> ($event['u_action'] . '&action=activate-all'),
+			'EXTONOFF_LISTENER_BUTTONS'			=> $this->config['extonoff_enable_buttons'],
+			'EXTONOFF_DISABLE_ALL'				=> ($event['u_action'] . '&action=disable-all'),
+			'EXTONOFF_ACTIVATE_ALL'				=> ($event['u_action'] . '&action=activate-all'),
 		]);
 
 		if ($event['action'] == 'disable-all')
 		{
-			$extoff_safe_time_limit = (ini_get('max_execution_time') / 2);
-			$extoff_start_time = time();
-			$extoff_enabled_extensions = $this->extension_manager->all_enabled();
-			unset($extoff_enabled_extensions['chris1278/extonoff']);
-			foreach ($extoff_enabled_extensions as $ext_name => $value)
+			$safe_time_limit = (ini_get('max_execution_time') / 2);
+			$start_time = time();
+			$enabled_extensions = $this->extension_manager->all_enabled();
+			unset($enabled_extensions['chris1278/extonoff']);
+			foreach ($enabled_extensions as $ext_name => $value)
 			{
 				while ($this->extension_manager->disable_step($ext_name))
 				{
-					if ((time() - $extoff_start_time) >= $extoff_safe_time_limit)
+					if ((time() - $start_time) >= $safe_time_limit)
 					{
 						meta_refresh(0, $this->u_action . '&amp;action=disable-all');
 					}
@@ -76,15 +76,15 @@ class acp_listener implements EventSubscriberInterface
 
 		if ($event['action'] == 'activate-all')
 		{
-			$exton_safe_time_limit = (ini_get('max_execution_time') / 2);
-			$exton_start_time = time();
-			$exton_enabled_extensions = $this->extension_manager->all_disabled();
-			unset($exton_enabled_extensions['chris1278/extonoff']);
-			foreach ($exton_enabled_extensions as $ext_name => $value)
+			$safe_time_limit = (ini_get('max_execution_time') / 2);
+			$start_time = time();
+			$enabled_extensions = $this->extension_manager->all_disabled();
+			unset($enabled_extensions['chris1278/extonoff']);
+			foreach ($enabled_extensions as $ext_name => $value)
 			{
 				while ($this->extension_manager->enable_step($ext_name))
 				{
-					if ((time() - $exton_start_time) >= $exton_safe_time_limit)
+					if ((time() - $start_time) >= $safe_time_limit)
 					{
 						meta_refresh(0, $this->u_action . '&amp;action=activate-all');
 					}

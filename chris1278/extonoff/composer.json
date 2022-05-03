@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "With this extension it is possible to deactivate or activate all active extensions at once.",
 	"homepage": "https://www.phpbb.de/community/viewtopic.php?f=149&t=242009",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"time": "2022-04-23",
 	"license": "GPL-2.0-only",
 	"authors": [
@@ -21,7 +21,7 @@
 	},
 	"extra": {
 		"display-name": "Enable/disable extensions completely",
-			"lang-min-ver": "1.0.0",
+			"lang-min-ver": "1.0.1",
 			"soft-require": {
 			"phpbb/phpbb": ">=3.2.7,<3.4.0@dev"
 		},

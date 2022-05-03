@@ -48,7 +48,7 @@ $lang = array_merge($lang, [
 	'EXTONOFF_DEACTIVATION_SUCCESFULL_INFO'					=> 'The extensions are already disabled. A repeated deactivation is not necessary.',
 	'EXTONOFF_DEACTIVATION_INFO'							=> 'Out of a total of <b>%2$s</b> active extensions, <b>%1$s</b> extensions can be deactivated using this extension.',
 	'EXTONOFF_EXTRA_BUTTONS'								=> 'Additional buttons in the "Manage extensions" view',
-	'CHRIS1278_EXTONOFF'									=> 'Activate additional buttons',
-	'CHRIS1278_EXTONOFF_EXPLAIN'							=> 'If you activate this option, buttons are also displayed in the <b>"Manage extensions"</b> view with which you can activate or deactivate all extensions there.',
+	'EXTONOFF_ENABLE_BUTTONS'									=> 'Activate additional buttons',
+	'EXTONOFF_ENABLE_BUTTONS_EXPLAIN'							=> 'If you activate this option, buttons are also displayed in the <b>"Manage extensions"</b> view with which you can activate or deactivate all extensions there.',
 	'ACP_EXTONOFF_SETTING_SAVED'							=> 'Settings saved successfully.',
 ]);

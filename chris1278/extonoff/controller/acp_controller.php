@@ -42,14 +42,16 @@ class acp_controller
 		$this->log					= $log;
 		$this->user					= $user;
 		$this->current_ext 			= 'chris1278/extonoff';
-		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
 	}
 
 	public function display_options()
 	{
-		$show_active_ext	= $this->request->variable('show_active_ext', 0);
-		$show_active_ext 	= $this->get_exton();
-		$active_complete 	= ($show_active_ext +1);
+		$this->language->add_lang('acp/extensions');
+		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
+
+		$show_active_ext			= $this->request->variable('show_active_ext', 0);
+		$show_active_ext 			= $this->get_exton();
+		$active_complete 			= ($show_active_ext +1);
 
 		$safe_time_limit = (ini_get('max_execution_time') / 2);
 		$start_time = time();
@@ -73,7 +75,6 @@ class acp_controller
 				}
 				$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_ACP_EXTONOFF_ACTIVATED');
 				trigger_error($this->language->lang('EXTONOFF_ACTIVATION_SUCCESFULL') . adm_back_link($this->u_action));
-
 			}
 			else
 			{
@@ -83,8 +84,6 @@ class acp_controller
 
 		if ($this->request->is_set_post('extonoff_disable_all'))
 		{
-			$show_active_ext	= $this->request->variable('show_active_ext', 0);
-			$show_active_ext 	= $this->get_exton();
 			$disabled_extensions = $this->extension_manager->all_enabled();
 
 			if (!$show_active_ext == 0)
@@ -100,7 +99,6 @@ class acp_controller
 						}
 					}
 				}
-
 				$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_ACP_EXTONOFF_DEACTIVATED');
 				trigger_error($this->language->lang('EXTONOFF_DEACTIVATION_SUCCESFULL') . adm_back_link($this->u_action));
 			}
@@ -116,14 +114,14 @@ class acp_controller
 			{
 				trigger_error($this->language->lang('FORM_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
-			$this->config->set('chris1278_extonoff', $this->request->variable('chris1278_extonoff', 0));
+			$this->config->set('extonoff_enable_buttons', $this->request->variable('extonoff_enable_buttons', 0));
 			trigger_error($this->language->lang('ACP_EXTONOFF_SETTING_SAVED') . adm_back_link($this->u_action));
 		}
 
 		$this->template->assign_vars([
-			'CHRIS1278_EXTONOFF'			=> $this->config['chris1278_extonoff'],
-			'EXTON_INFO'					=> sprintf($this->language->lang('EXTONOFF_DEACTIVATION_INFO'), $show_active_ext, $active_complete),
-			'U_ACTION'						=> $this->u_action,
+			'EXTONOFF_ENABLE_BUTTONS'			=> $this->config['extonoff_enable_buttons'],
+			'EXTONOFF_DEACTIVATION_INFO'						=> sprintf($this->language->lang('EXTONOFF_DEACTIVATION_INFO'), $show_active_ext, $active_complete),
+			'U_ACTION'							=> $this->u_action,
 
 		]);
 	}
