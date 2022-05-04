@@ -20,6 +20,7 @@ class acp_controller
 	protected $db;
 	protected $log;
 	protected $user;
+	protected $cache;
 	protected $u_action;
 
 	public function __construct(
@@ -30,7 +31,8 @@ class acp_controller
 		\phpbb\template\template $template,
 		\phpbb\db\driver\driver_interface $db,
 		\phpbb\log\log $log,
-		\phpbb\user $user
+		\phpbb\user $user,
+		\phpbb\cache\driver\driver_interface $cache
 	)
 	{
 		$this->extension_manager	= $ext_manager;
@@ -41,6 +43,7 @@ class acp_controller
 		$this->db  					= $db;
 		$this->log					= $log;
 		$this->user					= $user;
+		$this->cache				= $cache;
 		$this->current_ext 			= 'chris1278/extonoff';
 	}
 
@@ -55,6 +58,8 @@ class acp_controller
 
 		$safe_time_limit = (ini_get('max_execution_time') / 2);
 		$start_time = time();
+
+		$this->cache->purge();
 
 		if ($this->request->is_set_post('extonoff_activate_all'))
 		{
