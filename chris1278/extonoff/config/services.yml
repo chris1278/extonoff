@@ -10,15 +10,12 @@ services:
             - '@dbal.conn'
             - '@log'
             - '@user'
+            - '@cache.driver'
     chris1278.extonoff.listener:
         class: chris1278\extonoff\event\acp_listener
         arguments:
-            - '@ext.manager'
             - '@template'
-            - '@language'
             - '@config'
-            - '@log'
-            - '@user'
+            - '@service_container'
         tags:
             - { name: event.listener }
-           
