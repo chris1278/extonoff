@@ -32,7 +32,7 @@
 	{{ EXTONOFF_DEACTIVATION_INFO }}
 </div>
 		
-<form id="extonoff_general" method="post" action="{{ U_ACTION }}">
+<form id="extonoff_general" method="post" >
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_EXTRA_BUTTONS') }}</legend>
 		<dl>
@@ -43,6 +43,20 @@
 			<dd>
 				<label><input type="radio" class="radio" name="extonoff_enable_buttons" value="1" {% if EXTONOFF_ENABLE_BUTTONS %}checked="checked" {% endif %}/> {{ lang('YES') }}</label>
 				<label><input type="radio" class="radio" name="extonoff_enable_buttons" value="0" {% if not EXTONOFF_ENABLE_BUTTONS %}checked="checked" {% endif %}/> {{ lang('NO') }} </label>
+			</dd>
+		</dl>
+	</fieldset>
+	
+	<fieldset>
+		<legend>{{ lang('EXTONOFF_ADMIN_LOG') }}</legend>
+		<dl>
+			<dt>
+				<label>{{ lang('EXTONOFF_ENABLE_LOG') ~ lang('COLON') }}</label><br />
+				<span>{{ lang('EXTONOFF_ENABLE_LOG_EXPLAIN') }}</span>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" name="extonoff_enable_log" value="1" {% if EXTONOFF_ENABLE_LOG %}checked="checked" {% endif %}/> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_log" value="0" {% if not EXTONOFF_ENABLE_LOG %}checked="checked" {% endif %}/> {{ lang('NO') }} </label>
 			</dd>
 		</dl>
 	</fieldset>
