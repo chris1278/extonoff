@@ -3,7 +3,7 @@
 *
 * Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2022, Chris1278
+* @copyright (c) 2022, Chris1278 & LukeWCS
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -14,36 +14,28 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class acp_listener implements EventSubscriberInterface
 {
-	protected $template;
-	protected $config;
-	protected $container;
-	protected $u_action;
-
 	public function __construct(
-		\phpbb\template\template $template,
-		\phpbb\config\config $config,
-		\Symfony\Component\DependencyInjection\ContainerInterface $container
+		\chris1278\extonoff\controller\acp_controller $extonoff
 	)
 	{
-		$this->template 			= $template;
-		$this->config				= $config;
-		$this->container			= $container;
+		$this->extonoff	= $extonoff;
 	}
 
 	public static function getSubscribedEvents()
 	{
 		return [
-			'core.acp_extensions_run_action_before'	=> 'extonoff_run',
+			'core.common'							=> 'purge_cache',
+			'core.acp_extensions_run_action_before'	=> 'enable_disable',
 		];
 	}
 
-	public function extonoff_run($event)
+	public function enable_disable()
 	{
-		$this->template->assign_vars([
-			'EXTONOFF_LISTENER_BUTTONS'			=> $this->config['extonoff_enable_buttons'],
-		]);
+		$this->extonoff->enable_disable();
+	}
 
-		$acp_controller_for_buttons = $this->container->get('chris1278.extonoff.controller.acp');
-		$acp_controller_for_buttons->display_options();
+	public function purge_cache()
+	{
+		$this->extonoff->purge_cache();
 	}
 }

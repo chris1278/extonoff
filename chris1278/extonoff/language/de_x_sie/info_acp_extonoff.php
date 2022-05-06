@@ -3,7 +3,7 @@
 *
 * Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2022, Chris1278
+* @copyright (c) 2022, Chris1278 & LukeWCS
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -32,9 +32,13 @@ if (empty($lang) || !is_array($lang))
 // You do not need this where single placeholders are used, e.g. 'Message %d' is fine
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
+//
+// Some characters you may want to copy&paste:
+// ’ « » “ ” … „ “
 
 $lang = array_merge($lang, [
-	'EXTONOFF_TITLE'										=> 'Erweiterungen komplett Aktivieren/Deaktivieren',
-	'LOG_ACP_EXTONOFF_ACTIVATED'							=> '<strong>"Erweiterungen komplett Aktivieren/Deaktivieren"</strong><br />» Alle Extensions aktiviert',
-	'LOG_ACP_EXTONOFF_DEACTIVATED'							=> '<strong>"Erweiterungen komplett Aktivieren/Deaktivieren"</strong><br />» Alle Extensions deaktiviert',
+	'EXTONOFF_TITLE'			=> 'Erweiterungen komplett aktivieren/deaktivieren',
+	'EXTONOFF_LOG'				=> '<strong>Erweiterungen komplett aktivieren/deaktivieren</strong><br>» %1$s Erweiterungen %2$s',
+	'EXTONOFF_LOG_ACTIVATED'	=> 'aktiviert',
+	'EXTONOFF_LOG_DEACTIVATED'	=> 'deaktiviert',
 ]);

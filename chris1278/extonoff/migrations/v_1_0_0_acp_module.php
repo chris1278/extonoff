@@ -3,19 +3,18 @@
 *
 * Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2022, Chris1278
+* @copyright (c) 2022, Chris1278 & LukeWCS
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
 namespace chris1278\extonoff\migrations;
 
-class acp_module extends \phpbb\db\migration\migration
+class v_1_0_0_acp_module extends \phpbb\db\migration\migration
 {
-
 	public static function depends_on()
 	{
-		return ['\phpbb\db\migration\data\v310\dev'];
+		return ['\phpbb\db\migration\data\v32x\v3211'];
 	}
 
 	public function update_data()
