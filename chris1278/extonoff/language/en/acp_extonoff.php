@@ -53,6 +53,9 @@ $lang = array_merge($lang, [
 	'EXTONOFF_EXTRA_BUTTONS'				=> 'Additional buttons in the "Manage extensions" view',
 	'EXTONOFF_ENABLE_BUTTONS'				=> 'Activate additional buttons',
 	'EXTONOFF_ENABLE_BUTTONS_EXPLAIN'		=> 'If you activate this option, buttons are also displayed in the <b>"Manage extensions"</b> view with which you can activate or deactivate all extensions there.',
+	'EXTONOFF_ADMIN_LOG'					=> 'Switch log entry on/off',
+	'EXTONOFF_ENABLE_LOG'					=> 'Activate log entry',
+	'EXTONOFF_ENABLE_LOG_EXPLAIN'			=> 'Here you can control the log entry that you can find in the maintenance area of the forum. If you deactivate the log entry, no more entries will be added to the list of log entries. This only affects the entries that are noted in the log by the extension <b>„Enable/disable extensions completely“</b>.<br><br><b>Default:</b> Yes',
 	'EXTONOFF_ACTIVATION_ABORTED'			=> 'The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
 	'EXTONOFF_SETTINGS_SAVED'				=> 'Settings saved successfully.',
 ]);

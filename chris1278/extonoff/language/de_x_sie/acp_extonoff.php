@@ -53,6 +53,9 @@ $lang = array_merge($lang, [
 	'EXTONOFF_EXTRA_BUTTONS'				=> 'Zusatz Buttons in der Ansicht „Erweiterungen verwalten“',
 	'EXTONOFF_ENABLE_BUTTONS'				=> 'Zusatz-Buttons aktivieren',
 	'EXTONOFF_ENABLE_BUTTONS_EXPLAIN'		=> 'Wenn Sie diese Option aktivieren, werden in der Ansicht <b>„Erweiterungen verwalten“</b> ebenfalls Buttons eingeblendet, mit denen Sie auch dort alle Erweiterungen aktiveren bzw. deaktivieren können.',
+	'EXTONOFF_ADMIN_LOG'					=> 'Log-Eintrag Ein-/Ausschalten',
+	'EXTONOFF_ENABLE_LOG'					=> 'Log-Eintrag Aktivieren',
+	'EXTONOFF_ENABLE_LOG_EXPLAIN'			=> 'Hier können Sie den Log-Eintrag den Sie im Wartungsbereich des Forums finden steuern. Wenn Sie den Log-Eintrag deaktivieren, wird kein Eintrag mehr in die Liste der Log-Einträge hinzugefügt. Dies betrifft nur die Einträge die durch die Erweiterung <b>„Erweiterungen komplett aktivieren/deaktivieren“</b> im Log vermerkt werden.<br><br><b>Standard:</b> Ja',
 	'EXTONOFF_ACTIVATION_ABORTED'			=> 'Der Vorgang „Alle Erweiterungen aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
 	'EXTONOFF_SETTINGS_SAVED'				=> 'Einstellungen erfolgreich gespeichert.',
 ]);
