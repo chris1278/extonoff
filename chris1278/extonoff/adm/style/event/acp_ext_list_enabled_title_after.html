@@ -1,7 +1,6 @@
 {% if EXTONOFF_LISTENER_BUTTONS %}
-	<div style="float:right; font-size: 100%;">
-		<form method="post">
-			<input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DEACTIVATE') }}"/>
-		</form>
-	</div>
+	{% INCLUDECSS 'css/acp_extonoff_buttons.css' %}
+	<form id="extonoff_button_disable" method="post">
+		<input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }}">
+	</form>
 {% endif %}

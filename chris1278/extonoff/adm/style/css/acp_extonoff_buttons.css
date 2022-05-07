@@ -1,0 +1,13 @@
+/**
+*
+* Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
+*
+* @copyright (c) 2022, Chris1278 & LukeWCS
+* @license GNU General Public License, version 2 (GPL-2.0)
+*
+*/
+
+#extonoff_button_enable,
+#extonoff_button_disable {
+	float: right;
+}
