@@ -10,17 +10,24 @@
 
 namespace chris1278\extonoff\migrations;
 
-class v_1_0_0_database extends \phpbb\db\migration\migration
+class v_1_0_1_acp_module extends \phpbb\db\migration\migration
 {
 	public static function depends_on()
 	{
-		return ['\chris1278\extonoff\migrations\v_1_0_0_acp_module'];
+		return ['\phpbb\db\migration\data\v32x\v3211'];
 	}
 
 	public function update_data()
 	{
 		return [
-			['config.add', ['chris1278_extonoff', 0]],
+			['module.add', [
+				'acp',
+				'ACP_EXTENSION_MANAGEMENT',
+				[
+					'module_basename'	=> '\chris1278\extonoff\acp\main_module',
+					'modes'				=> ['settings'],
+				],
+			]],
 		];
 	}
 }

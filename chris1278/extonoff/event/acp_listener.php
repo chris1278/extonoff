@@ -24,7 +24,7 @@ class acp_listener implements EventSubscriberInterface
 	public static function getSubscribedEvents()
 	{
 		return [
-			'core.common'							=> 'purge_cache',
+			'core.common'							=> 'todo',
 			'core.acp_extensions_run_action_before'	=> 'enable_disable',
 		];
 	}
@@ -34,8 +34,8 @@ class acp_listener implements EventSubscriberInterface
 		$this->extonoff->enable_disable();
 	}
 
-	public function purge_cache()
+	public function todo()
 	{
-		$this->extonoff->purge_cache();
+		$this->extonoff->todo();
 	}
 }

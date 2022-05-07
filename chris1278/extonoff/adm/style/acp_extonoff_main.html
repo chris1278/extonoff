@@ -1,4 +1,3 @@
-{% INCLUDECSS 'css/acp_extonoff.css' %}
 {% INCLUDE 'overall_header.html' %}
 
 <h1>{{ lang('EXTONOFF_TITLE') }}</h1>
@@ -9,20 +8,20 @@
 		<legend>{{ lang('EXTONOFF_ACTIVATE_OPTION') }}</legend>
 		<dl>
 			<dt>
-				<label>{{ lang('EXTONOFF_ACTIVATE') ~ lang('COLON') }}</label><br />
+				<label>{{ lang('EXTONOFF_ACTIVATE') ~ lang('COLON') }}</label><br>
 				<span>{{ lang('EXTONOFF_ACTIVATE_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input class="button1" type="submit" name="extonoff_activate_all" value="{{ lang('EXTONOFF_ALL_ACTIVATE') }}"/></label>
+				<label><input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }}"></label>
 			</dd>
 		</dl>
 		<dl>
 			<dt>
-				<label>{{ lang('EXTONOFF_DEACTIVATE') ~ lang('COLON') }}</label><br />
+				<label>{{ lang('EXTONOFF_DEACTIVATE') ~ lang('COLON') }}</label><br>
 				<span>{{ lang('EXTONOFF_DEACTIVATE_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DEACTIVATE') }}"/></label>
+				<label><input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }}"></label>
 			</dd>
 		</dl>
 	</fieldset>
@@ -37,12 +36,13 @@
 		<legend>{{ lang('EXTONOFF_EXTRA_BUTTONS') }}</legend>
 		<dl>
 			<dt>
-				<label>{{ lang('EXTONOFF_ENABLE_BUTTONS') ~ lang('COLON') }}</label><br />
+				<label>{{ lang('EXTONOFF_ENABLE_BUTTONS') ~ lang('COLON') }}</label><br>
 				<span>{{ lang('EXTONOFF_ENABLE_BUTTONS_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input type="radio" class="radio" name="extonoff_enable_buttons" value="1" {% if EXTONOFF_ENABLE_BUTTONS %}checked="checked" {% endif %}/> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="extonoff_enable_buttons" value="0" {% if not EXTONOFF_ENABLE_BUTTONS %}checked="checked" {% endif %}/> {{ lang('NO') }} </label>
+				<label><input type="radio" class="radio" name="extonoff_enable_buttons" value="1" {{ EXTONOFF_ENABLE_BUTTONS == 1 ? 'checked="checked"' }}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_buttons" value="0" {{ EXTONOFF_ENABLE_BUTTONS == 0 ? 'checked="checked"' }}> {{ lang('NO') }}</label>
+				{{ _self.extonoff_default(lang('NO')) }}
 			</dd>
 		</dl>
 	</fieldset>
@@ -51,22 +51,31 @@
 		<legend>{{ lang('EXTONOFF_ADMIN_LOG') }}</legend>
 		<dl>
 			<dt>
-				<label>{{ lang('EXTONOFF_ENABLE_LOG') ~ lang('COLON') }}</label><br />
+				<label>{{ lang('EXTONOFF_ENABLE_LOG') ~ lang('COLON') }}</label><br>
 				<span>{{ lang('EXTONOFF_ENABLE_LOG_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input type="radio" class="radio" name="extonoff_enable_log" value="1" {% if EXTONOFF_ENABLE_LOG %}checked="checked" {% endif %}/> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="extonoff_enable_log" value="0" {% if not EXTONOFF_ENABLE_LOG %}checked="checked" {% endif %}/> {{ lang('NO') }} </label>
+				<label><input type="radio" class="radio" name="extonoff_enable_log" value="1" {{ EXTONOFF_ENABLE_LOG == 1 ? 'checked="checked"' }}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_log" value="0" {{ EXTONOFF_ENABLE_LOG == 0 ? 'checked="checked"' }}> {{ lang('NO') }}</label>
+				{{ _self.extonoff_default(lang('YES')) }}
 			</dd>
 		</dl>
 	</fieldset>
 	
 	<p class="submit-buttons">
-		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}" />&nbsp;
-		<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}" />
+		<input class="button1" type="submit" id="submit" name="submit" value="{{ lang('SUBMIT') }}">&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}">
 	</p>
 
 {S_FORM_TOKEN}
 </form>
 
 {% INCLUDE 'overall_footer.html' %}
+
+{% INCLUDECSS 'css/acp_extonoff.css' %}
+
+{% macro extonoff_default(value) %}
+	<div class="extonoff_default">
+		<strong>{{ lang('EXTONOFF_DEFAULT') ~ lang('COLON') }}</strong> {{ value }}
+	</div>
+{% endmacro %}

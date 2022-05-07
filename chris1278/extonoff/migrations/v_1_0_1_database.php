@@ -14,15 +14,17 @@ class v_1_0_1_database extends \phpbb\db\migration\migration
 {
 	public static function depends_on()
 	{
-		return ['\chris1278\extonoff\migrations\v_1_0_0_database'];
+		return ['\chris1278\extonoff\migrations\v_1_0_1_acp_module'];
 	}
 
 	public function update_data()
 	{
 		return [
-			['config.add',		['extonoff_enable_buttons',	$this->config['chris1278_extonoff']]],
-			['config.add',		['extonoff_purge_cache', 0]],
-			['config.remove',	['chris1278_extonoff']],
+			['config.add',		['extonoff_enable_buttons',	0]],
+			['config.add',		['extonoff_enable_log', 1]],
+			['config.add',		['extonoff_exec_todo', 0]],
+			['config.add',		['extonoff_todo_purge_cache', 0]],
+			['config_text.add', ['extonoff_todo_add_log', '']],
 		];
 	}
 }
