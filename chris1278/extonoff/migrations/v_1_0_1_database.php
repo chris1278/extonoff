@@ -20,7 +20,7 @@ class v_1_0_1_database extends \phpbb\db\migration\migration
 	public function update_data()
 	{
 		return [
-			['config.add',		['extonoff_enable_buttons',	0]],
+			['config.add',		['extonoff_enable_buttons', 0]],
 			['config.add',		['extonoff_enable_log', 1]],
 			['config.add',		['extonoff_exec_todo', 0]],
 			['config.add',		['extonoff_todo_purge_cache', 0]],

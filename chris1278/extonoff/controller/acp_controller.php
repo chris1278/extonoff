@@ -74,7 +74,6 @@ class acp_controller
 			{
 				$this->config->set('extonoff_exec_todo', 1);
 				$this->config->set('extonoff_todo_purge_cache', 1);
-				$this->config_text->set('extonoff_todo_add_log', '');
 
 				foreach ($disabled_extensions as $ext_name => $value)
 				{
@@ -116,8 +115,7 @@ class acp_controller
 				trigger_error($this->language->lang('EXTONOFF_ACTIVATION_UNNECESSARY') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
 		}
-
-		if ($this->request->is_set_post('extonoff_disable_all'))
+		else if ($this->request->is_set_post('extonoff_disable_all'))
 		{
 			$enabled_extensions = $this->extension_manager->all_enabled();
 			$ext_count_success = 0;
@@ -126,6 +124,7 @@ class acp_controller
 			{
 				$this->config->set('extonoff_exec_todo', 1);
 				$this->config->set('extonoff_todo_purge_cache', 1);
+
 				unset($enabled_extensions['chris1278/extonoff']);
 				foreach ($enabled_extensions as $ext_name => $value)
 				{
@@ -161,18 +160,22 @@ class acp_controller
 
 	public function acp_module()
 	{
+		if ($this->request->is_set_post('extonoff_enable_all') || $this->request->is_set_post('extonoff_disable_all'))
+		{
+			$this->enable_disable();
+			return;
+		}
+
+		add_form_key('extonoff_settings');
+
 		$this->language->add_lang('acp/extensions');
 		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
 
 		$show_active_ext = count($this->extension_manager->all_enabled()) - 1;
 
-		if ($this->request->is_set_post('extonoff_enable_all') || $this->request->is_set_post('extonoff_disable_all'))
+		if ($this->request->is_set_post('submit'))
 		{
-			$this->enable_disable();
-		}
-		else if ($this->request->is_set_post('submit'))
-		{
-			if ($this->request->is_set_post('extonoff_general'))
+			if (!check_form_key('extonoff_settings'))
 			{
 				trigger_error($this->language->lang('FORM_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
