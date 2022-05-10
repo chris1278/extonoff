@@ -37,26 +37,44 @@ if (empty($lang) || !is_array($lang))
 // ’ « » “ ” … „ “
 
 $lang = array_merge($lang, [
-	'EXTONOFF_EXPLAIN'						=> 'Here you have the option of deactivating or activating all extensions at once.<br><br>Here you can either activate all or deactivate all extensions that are activated using the buttons.<br><br>You also have the option of displaying the buttons directly in the <strong>"Manage Extensions"</strong> view and using them there.<br><br><strong style="color: red">Warning:</strong> Only the extensions that are installed can be activated or deactivated. Extensions that are in the list but are not yet installed are not taken into account.',
+	// settings head
+	'EXTONOFF_EXPLAIN_1'					=> 'Here you have the option of deactivating or activating all extensions at once.',
+	'EXTONOFF_EXPLAIN_2'					=> 'You also have the option of displaying the buttons directly in the "Manage Extensions" view.',
+	'EXTONOFF_EXPLAIN_3'					=> '<strong style="color: red">Warning:</strong> Only the extensions that are installed can be activated or deactivated. Extensions that are in the list but are not yet installed are not taken into account.',
+
+	// settings buttons
 	'EXTONOFF_ACTIVATE_OPTION'				=> 'All Extensions enable/disable',
-	'EXTONOFF_ACTIVATE'						=> 'Activate all extensions',
-	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'By pressing the <strong>"Activate all extensions"</strong> button, all installed but deactivated extensions will be activated.',
-	'EXTONOFF_ALL_ENABLE'					=> 'Activate all extensions',
-	'EXTONOFF_ACTIVATION_SUCCESFULL'		=> '%1$u of %2$u disabled extensions have been enabled.',
-	'EXTONOFF_ACTIVATION_UNNECESSARY'		=> 'The extensions are already activated. A renewed activation is not necessary.',
 	'EXTONOFF_DEACTIVATE'					=> 'Disable all extensions',
-	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'By pressing the button <strong>"Disable all extensions"</strong>, all activated extensions will be deactivated.<br><br><strong>Note:</strong> The extension <strong>"Enable /disable extensions completely"</strong> remains activated. You then have to deactivate them manually.',
+	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'By pressing the button "Disable all extensions", all activated extensions will be deactivated execept for the extension "Enable /disable extensions completely". You have to deactivate them manually.',
 	'EXTONOFF_ALL_DISABLE'					=> 'Disable all extensions',
-	'EXTONOFF_DEACTIVATION_SUCCESFULL'		=> '%1$u of %2$u enabled extensions have been disabled.',
-	'EXTONOFF_DEACTIVATION_UNNECESSARY'		=> 'The extensions are already disabled. A repeated deactivation is not necessary.',
+	'EXTONOFF_ACTIVATE'						=> 'Activate all extensions',
+	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'By pressing the "Activate all extensions" button, all installed but deactivated extensions will be activated.',
+	'EXTONOFF_ALL_ENABLE'					=> 'Activate all extensions',
+
+	// settings info
 	'EXTONOFF_DEACTIVATION_INFO'			=> 'Out of a total of <strong>%2$u</strong> active extensions, <strong>%1$u</strong> extensions can be deactivated using this extension.',
-	'EXTONOFF_EXTRA_BUTTONS'				=> 'Additional buttons in the "Manage extensions" view',
-	'EXTONOFF_ENABLE_BUTTONS'				=> 'Activate additional buttons',
-	'EXTONOFF_ENABLE_BUTTONS_EXPLAIN'		=> 'If you activate this option, buttons are also displayed in the <strong>"Manage extensions"</strong> view with which you can activate or deactivate all extensions there.',
-	'EXTONOFF_ADMIN_LOG'					=> 'Log entry',
-	'EXTONOFF_ENABLE_LOG'					=> 'Activate log entry',
-	'EXTONOFF_ENABLE_LOG_EXPLAIN'			=> 'Here you can specify whether an entry should be added to the administrator log for the actions <strong>"Activate all extensions"</strong> and <strong>"Deactivate all extensions"</strong>.',
+
+	// settings
+	'EXTONOFF_SETTINGS_TITLE'				=> 'Settings',
+	'EXTONOFF_INTEGRATION'					=> 'Activate additional buttons',
+	'EXTONOFF_INTEGRATION_EXPLAIN'			=> 'If you activate this option, buttons are also displayed in the "Manage extensions" view with which you can activate or deactivate all extensions there. In addition, the number of activated, deactivated and not installed extensions is displayed.',
+	'EXTONOFF_LOG'							=> 'Log entry',
+	'EXTONOFF_LOG_EXPLAIN'					=> 'Here you can specify whether an entry should be added to the administrator log for the actions "Activate all extensions" and "Deactivate all extensions".',
+	'EXTONOFF_CONFIRMATION'					=> 'Confirmation',
+	'EXTONOFF_CONFIRMATION_EXPLAIN'			=> 'Here you can specify whether the actions "Activate all extensions" and "Deactivate all extensions" should be prompted and must be confirmed.',
+
+	// misc
 	'EXTONOFF_DEFAULT'						=> 'Default',
+	'EXTONOFF_INSTALLED'					=> 'installed',
+	'EXTONOFF_NOT_INSTALLED'				=> 'not installed',
+
+	// messages
 	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
 	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'Settings saved successfully.',
+	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Are you sure that you wish to disable %u extensions?',
+	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Are you sure that you wish to enable %u extensions?',
+	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u of %2$u enabled extensions have been disabled.',
+	'EXTONOFF_MSG_DEACTIVATION_UNNECESSARY'	=> 'The extensions are already disabled. A repeated deactivation is not necessary.',
+	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u of %2$u disabled extensions have been enabled.',
+	'EXTONOFF_MSG_ACTIVATION_UNNECESSARY'	=> 'The extensions are already activated. A renewed activation is not necessary.',
 ]);

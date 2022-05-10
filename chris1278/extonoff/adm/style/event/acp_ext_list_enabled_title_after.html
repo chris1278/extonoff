@@ -1,5 +1,6 @@
-{% if EXTONOFF_LISTENER_BUTTONS %}
+{% if EXTONOFF_INTEGRATION %}
 	{% INCLUDECSS 'css/acp_extonoff_buttons.css' %}
+	<strong>( {{ EXTONOFF_ACTIVE_EXTS }} )</strong>
 	<form id="extonoff_button_disable" method="post">
 		<input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }}">
 	</form>

@@ -25,13 +25,13 @@ class acp_listener implements EventSubscriberInterface
 	{
 		return [
 			'core.common'							=> 'todo',
-			'core.acp_extensions_run_action_before'	=> 'enable_disable',
+			'core.acp_extensions_run_action_before'	=> 'ext_manager',
 		];
 	}
 
-	public function enable_disable()
+	public function ext_manager($event)
 	{
-		$this->extonoff->enable_disable();
+		$this->extonoff->ext_manager($event);
 	}
 
 	public function todo()
