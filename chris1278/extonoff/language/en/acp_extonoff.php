@@ -51,9 +51,6 @@ $lang = array_merge($lang, [
 	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'By pressing the "Activate all extensions" button, all installed but deactivated extensions will be activated.',
 	'EXTONOFF_ALL_ENABLE'					=> 'Activate all extensions',
 
-	// settings info
-	'EXTONOFF_DEACTIVATION_INFO'			=> 'Out of a total of <strong>%2$u</strong> active extensions, <strong>%1$u</strong> extensions can be deactivated using this extension.',
-
 	// settings
 	'EXTONOFF_SETTINGS_TITLE'				=> 'Settings',
 	'EXTONOFF_INTEGRATION'					=> 'Activate additional buttons',
@@ -67,14 +64,17 @@ $lang = array_merge($lang, [
 	'EXTONOFF_DEFAULT'						=> 'Default',
 	'EXTONOFF_INSTALLED'					=> 'installed',
 	'EXTONOFF_NOT_INSTALLED'				=> 'not installed',
+	'EXTONOFF_EXTENSION_PLURAL'				=> [
+		0 => "0 extensions",
+		1 => "%u extension",
+		2 => "%u extensions",
+	],
 
 	// messages
 	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
 	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'Settings saved successfully.',
-	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Are you sure that you wish to disable %u extensions?',
-	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Are you sure that you wish to enable %u extensions?',
+	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Are you sure that you wish to disable %s?',
+	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Are you sure that you wish to enable %s?',
 	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u of %2$u enabled extensions have been disabled.',
-	'EXTONOFF_MSG_DEACTIVATION_UNNECESSARY'	=> 'The extensions are already disabled. A repeated deactivation is not necessary.',
 	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u of %2$u disabled extensions have been enabled.',
-	'EXTONOFF_MSG_ACTIVATION_UNNECESSARY'	=> 'The extensions are already activated. A renewed activation is not necessary.',
 ]);

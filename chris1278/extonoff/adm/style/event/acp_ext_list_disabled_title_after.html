@@ -1,7 +1,7 @@
 {% if EXTONOFF_INTEGRATION %}
-	{% INCLUDECSS 'css/acp_extonoff_buttons.css' %}
+	{% INCLUDECSS 'css/acp_extonoff_extmgr.css' %}
 	<strong>( {{ lang('EXTONOFF_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_INACTIVE_EXTS }} / {{ lang('EXTONOFF_NOT_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_NOT_INSTALLED_EXTS }} )</strong>
 	<form id="extonoff_button_enable" method="post">
-		<input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }}">
+		<input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }}"{{ EXTONOFF_INACTIVE_EXTS == 0 ? ' disabled' }}>
 	</form>
 {% endif %}

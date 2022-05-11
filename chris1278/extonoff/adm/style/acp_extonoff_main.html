@@ -14,7 +14,7 @@
 				<span>{{ lang('EXTONOFF_DEACTIVATE_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }}"></label>
+				<label><input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }} ({{ EXTONOFF_ACTIVE_EXTS }})"{{ EXTONOFF_ACTIVE_EXTS == 0 ? ' disabled' }}></label>
 			</dd>
 		</dl>
 		<dl>
@@ -23,16 +23,12 @@
 				<span>{{ lang('EXTONOFF_ACTIVATE_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }}"></label>
+				<label><input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }} ({{ EXTONOFF_INACTIVE_EXTS }})"{{ EXTONOFF_INACTIVE_EXTS == 0 ? ' disabled' }}></label>
 			</dd>
 		</dl>
 	</fieldset>
 </form>
 	
-<div id="extonoff_infobox">
-	{{ EXTONOFF_DEACTIVATION_INFO }}
-</div>
-		
 <form id="extonoff_settings" method="post" >
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_SETTINGS_TITLE') }}</legend>

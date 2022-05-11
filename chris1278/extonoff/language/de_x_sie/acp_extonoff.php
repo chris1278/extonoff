@@ -51,9 +51,6 @@ $lang = array_merge($lang, [
 	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'Durch drücken des Buttons „Alle Erweiterungen aktivieren“ werden alle installierten aber deaktivierten Erweiterungen aktiviert.',
 	'EXTONOFF_ALL_ENABLE'					=> 'Alle Erweiterungen aktivieren',
 
-	// settings info
-	'EXTONOFF_DEACTIVATION_INFO'			=> 'Es können von insgesamt <strong>%2$u</strong> aktiven Erweiterungen <strong>%1$u</strong> Erweiterungen mittels dieser Erweiterung deaktiviert werden.',
-
 	// settings
 	'EXTONOFF_SETTINGS_TITLE'				=> 'Einstellungen',
 	'EXTONOFF_INTEGRATION'					=> 'Integration in „Erweiterungen verwalten“',
@@ -67,14 +64,17 @@ $lang = array_merge($lang, [
 	'EXTONOFF_DEFAULT'						=> 'Standard',
 	'EXTONOFF_INSTALLED'					=> 'installiert',
 	'EXTONOFF_NOT_INSTALLED'				=> 'nicht installiert',
+	'EXTONOFF_EXTENSION_PLURAL'				=> [
+		0 => "0 Erweiterungen",
+		1 => "%u Erweiterung",
+		2 => "%u Erweiterungen",
+	],
 
 	// messages
 	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'Der Vorgang „Alle Erweiterungen aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
 	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'Einstellungen erfolgreich gespeichert.',
-	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Sind Sie sich sicher, dass Sie %1$u Erweiterungen deaktivieren möchten?',
-	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Sind Sie sich sicher, dass Sie %1$u Erweiterungen aktivieren möchten?',
+	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Sind Sie sich sicher, dass Sie %s deaktivieren möchten?',
+	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Sind Sie sich sicher, dass Sie %s aktivieren möchten?',
 	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u von %2$u aktivierten Erweiterungen wurden deaktiviert.',
-	'EXTONOFF_MSG_DEACTIVATION_UNNECESSARY'	=> 'Die Erweiterungen sind bereits alle deaktiviert. Eine nochmalige Deaktivierung ist nicht notwendig.',
 	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u von %2$u deaktivierten Erweiterungen wurden aktiviert.',
-	'EXTONOFF_MSG_ACTIVATION_UNNECESSARY'	=> 'Die Erweiterungen sind bereits alle aktiviert. Eine nochmalige Aktivierung ist nicht notwendig.',
 ]);
