@@ -134,11 +134,13 @@ class acp_controller
 						meta_refresh(0);
 					}
 				}
+
 				if ($this->extension_manager->is_disabled($ext_name))
 				{
 					$ext_count_success++;
 				}
 			}
+
 			if ($this->config['extonoff_enable_log'])
 			{
 				$this->config_text->set('extonoff_todo_add_log', $this->get_log_json(
@@ -174,10 +176,12 @@ class acp_controller
 						meta_refresh(0);
 					}
 				}
+
 				if ($this->extension_manager->is_enabled($ext_name))
 				{
 					$ext_count_success++;
 				}
+
 				if ($this->config['extonoff_enable_log'])
 				{
 					$this->config_text->set('extonoff_todo_add_log', $this->get_log_json(
@@ -187,6 +191,7 @@ class acp_controller
 					));
 				}
 			}
+
 			$this->template->assign_vars([
 				'EXTONOFF_LAST_EXT_NAME'			=> '',
 				'EXTONOFF_LAST_EXT_DISPLAY_NAME'	=> '',
@@ -287,7 +292,7 @@ class acp_controller
 					'admin',
 					$last_job['user_id'],
 					$last_job['user_ip'],
-					'EXTONOFF_LOG',
+					'EXTONOFF_LOG_ENTRY',
 					$last_job['timestamp'],
 					[$last_job['ext_count_success'], $last_job['ext_count'], $last_job['action_lang']]
 				);

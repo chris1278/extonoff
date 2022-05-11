@@ -17,5 +17,6 @@
 }
 
 input[type="submit"]:disabled {
-  color: silver;
+  opacity: .4;
+  cursor: not-allowed;
 }
