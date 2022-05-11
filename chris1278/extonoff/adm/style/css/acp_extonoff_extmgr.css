@@ -11,3 +11,11 @@
 #extonoff_button_disable {
 	float: right;
 }
+
+#confirm h2 {
+	margin-bottom: .25em;
+}
+
+input[type="submit"]:disabled {
+  color: silver;
+}
