@@ -50,12 +50,13 @@ class acp_controller
 	{
 		$this->language->add_lang('acp/extensions');
 		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
+
 		if ($this->request->is_set_post('extonoff_disable_all'))
 		{
 			$ext_count_enabled_clean = count($this->extension_manager->all_enabled()) - 1;
 			if ($this->config['extonoff_enable_confirmation'])
 			{
-				if (confirm_box(true) || $ext_count_enabled_clean == 0)
+				if (confirm_box(true))
 				{
 					$this->enable_disable("disable");
 				}
@@ -66,7 +67,7 @@ class acp_controller
 						$this->language->lang('EXTONOFF_MSG_CONFIRM_DISABLE', $this->language->lang('EXTONOFF_EXTENSION_PLURAL', $ext_count_enabled_clean)),
 						build_hidden_fields([
 							'extonoff_disable_all' => true,
-							'action' => $this->u_action
+							'u_action' => $this->u_action
 						]),
 						'@chris1278_extonoff/acp_extonoff_confirm.html'
 					);
@@ -82,7 +83,7 @@ class acp_controller
 			$ext_count_disabled = count($this->extension_manager->all_disabled());
 			if ($this->config['extonoff_enable_confirmation'])
 			{
-				if (confirm_box(true) || $ext_count_disabled == 0)
+				if (confirm_box(true))
 				{
 					$this->enable_disable("enable");
 				}
@@ -93,7 +94,7 @@ class acp_controller
 						$this->language->lang('EXTONOFF_MSG_CONFIRM_ENABLE', $this->language->lang('EXTONOFF_EXTENSION_PLURAL', $ext_count_disabled)),
 						build_hidden_fields([
 							'extonoff_enable_all' => true,
-							'action' => $this->u_action
+							'u_action' => $this->u_action
 						]),
 						'@chris1278_extonoff/acp_extonoff_confirm.html'
 					);
@@ -104,7 +105,8 @@ class acp_controller
 				$this->enable_disable("enable");
 			}
 		}
-		redirect($this->request->variable('action', ''));
+
+		redirect($this->request->variable('u_action', ''));
 	}
 
 	public function enable_disable($action)
@@ -117,15 +119,15 @@ class acp_controller
 
 		if ($action == "disable")
 		{
-			$enabled_extensions = $this->extension_manager->all_enabled();
-			$ext_count_enabled_clean = count($enabled_extensions) - 1;
+			$ext_list_enabled = $this->extension_manager->all_enabled();
+			$ext_count_enabled_clean = count($ext_list_enabled) - 1;
 			$ext_count_success = 0;
 
 			$this->config->set('extonoff_exec_todo', 1);
 			$this->config->set('extonoff_todo_purge_cache', 1);
 
-			unset($enabled_extensions['chris1278/extonoff']);
-			foreach ($enabled_extensions as $ext_name => $value)
+			unset($ext_list_enabled['chris1278/extonoff']);
+			foreach ($ext_list_enabled as $ext_name => $value)
 			{
 				while ($this->extension_manager->disable_step($ext_name))
 				{
@@ -150,18 +152,18 @@ class acp_controller
 				));
 			}
 
-			trigger_error($this->language->lang('EXTONOFF_MSG_DEACTIVATION_SUCCESFULL', $ext_count_success, $ext_count_enabled_clean) . adm_back_link($this->u_action));
+			trigger_error($this->language->lang('EXTONOFF_MSG_DEACTIVATION_SUCCESFULL', $ext_count_success, $ext_count_enabled_clean) . adm_back_link($this->u_action), (($ext_count_success == 0) ? E_USER_WARNING : E_USER_NOTICE));
 		}
 		else if ($action == "enable")
 		{
-			$disabled_extensions = $this->extension_manager->all_disabled();
-			$ext_count_disabled = count($disabled_extensions);
+			$ext_list_disabled = $this->extension_manager->all_disabled();
+			$ext_count_disabled = count($ext_list_disabled);
 			$ext_count_success = 0;
 
 			$this->config->set('extonoff_exec_todo', 1);
 			$this->config->set('extonoff_todo_purge_cache', 1);
 
-			foreach ($disabled_extensions as $ext_name => $value)
+			foreach ($ext_list_disabled as $ext_name => $value)
 			{
 				$ext_display_name = $this->extension_manager->create_extension_metadata_manager($ext_name)->get_metadata('display-name');
 				$this->template->assign_vars([
@@ -286,6 +288,7 @@ class acp_controller
 		{
 			$last_job = json_decode($this->config_text->get('extonoff_todo_add_log'), true);
 			$this->config_text->set('extonoff_todo_add_log', '');
+
 			if ($last_job !== null)
 			{
 				$this->log->add(
@@ -294,7 +297,11 @@ class acp_controller
 					$last_job['user_ip'],
 					'EXTONOFF_LOG_ENTRY',
 					$last_job['timestamp'],
-					[$last_job['ext_count_success'], $last_job['ext_count'], $last_job['action_lang']]
+					[
+						$last_job['ext_count_success'],
+						$last_job['ext_count'],
+						$last_job['action_lang']
+					]
 				);
 			}
 		}
