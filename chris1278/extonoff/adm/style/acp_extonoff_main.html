@@ -5,7 +5,7 @@
 <p>{{ lang('EXTONOFF_EXPLAIN_2') }}</p>
 <p>{{ lang('EXTONOFF_EXPLAIN_3') }}</p>
 
-<form method="post">
+<form method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_ACTIVATE_OPTION') }}</legend>
 		<dl>
@@ -29,7 +29,7 @@
 	</fieldset>
 </form>
 	
-<form id="extonoff_settings" method="post" >
+<form id="extonoff_settings" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_SETTINGS_TITLE') }}</legend>
 		<dl>
@@ -38,8 +38,8 @@
 				<span>{{ lang('EXTONOFF_INTEGRATION_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input type="radio" class="radio" name="extonoff_enable_integration" value="1" {{ EXTONOFF_ENABLE_INTEGRATION == 1 ? 'checked="checked"' }}> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="extonoff_enable_integration" value="0" {{ EXTONOFF_ENABLE_INTEGRATION == 0 ? 'checked="checked"' }}> {{ lang('NO') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_integration" value="1"{{ EXTONOFF_ENABLE_INTEGRATION == 1 ? ' checked' }}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_integration" value="0"{{ EXTONOFF_ENABLE_INTEGRATION == 0 ? ' checked' }}> {{ lang('NO') }}</label>
 				{{ _self.extonoff_default(lang('NO')) }}
 			</dd>
 		</dl>
@@ -50,8 +50,8 @@
 				<span>{{ lang('EXTONOFF_LOG_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input type="radio" class="radio" name="extonoff_enable_log" value="1" {{ EXTONOFF_ENABLE_LOG == 1 ? 'checked="checked"' }}> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="extonoff_enable_log" value="0" {{ EXTONOFF_ENABLE_LOG == 0 ? 'checked="checked"' }}> {{ lang('NO') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_log" value="1"{{ EXTONOFF_ENABLE_LOG == 1 ? ' checked' }}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_log" value="0"{{ EXTONOFF_ENABLE_LOG == 0 ? ' checked' }}> {{ lang('NO') }}</label>
 				{{ _self.extonoff_default(lang('YES')) }}
 			</dd>
 		</dl>
@@ -62,8 +62,8 @@
 				<span>{{ lang('EXTONOFF_CONFIRMATION_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input type="radio" class="radio" name="extonoff_enable_confirmation" value="1" {{ EXTONOFF_ENABLE_CONFIRMATION == 1 ? 'checked="checked"' }}> {{ lang('YES') }}</label>
-				<label><input type="radio" class="radio" name="extonoff_enable_confirmation" value="0" {{ EXTONOFF_ENABLE_CONFIRMATION == 0 ? 'checked="checked"' }}> {{ lang('NO') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_confirmation" value="1"{{ EXTONOFF_ENABLE_CONFIRMATION == 1 ? ' checked' }}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_confirmation" value="0"{{ EXTONOFF_ENABLE_CONFIRMATION == 0 ? ' checked' }}> {{ lang('NO') }}</label>
 				{{ _self.extonoff_default(lang('YES')) }}
 			</dd>
 		</dl>
