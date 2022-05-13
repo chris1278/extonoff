@@ -28,8 +28,6 @@ class main_module
 
 		$this->page_title = $language->lang('EXTONOFF_TITLE');
 
-		$acp_controller->set_page_url($this->u_action);
-
-		$acp_controller->acp_module();
+		$acp_controller->acp_module($this->u_action);
 	}
 }

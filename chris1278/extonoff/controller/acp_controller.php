@@ -48,9 +48,6 @@ class acp_controller
 
 	public function enable_disable_confirm()
 	{
-		$this->language->add_lang('acp/extensions');
-		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
-
 		if ($this->request->is_set_post('extonoff_disable_all'))
 		{
 			$ext_count_enabled_clean = count($this->extension_manager->all_enabled()) - 1;
@@ -67,6 +64,7 @@ class acp_controller
 						$this->language->lang('EXTONOFF_MSG_CONFIRM_DISABLE', $this->language->lang('EXTONOFF_EXTENSION_PLURAL', $ext_count_enabled_clean)),
 						build_hidden_fields([
 							'extonoff_disable_all' => true,
+							'extonoff_confirm_box' => true,
 							'u_action' => $this->u_action
 						]),
 						'@chris1278_extonoff/acp_extonoff_confirm.html'
@@ -94,6 +92,7 @@ class acp_controller
 						$this->language->lang('EXTONOFF_MSG_CONFIRM_ENABLE', $this->language->lang('EXTONOFF_EXTENSION_PLURAL', $ext_count_disabled)),
 						build_hidden_fields([
 							'extonoff_enable_all' => true,
+							'extonoff_confirm_box' => true,
 							'u_action' => $this->u_action
 						]),
 						'@chris1278_extonoff/acp_extonoff_confirm.html'
@@ -111,9 +110,6 @@ class acp_controller
 
 	public function enable_disable($action)
 	{
-		$this->language->add_lang('acp/extensions');
-		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
-
 		$safe_time_limit = (ini_get('max_execution_time') / 2);
 		$start_time = time();
 
@@ -205,7 +201,15 @@ class acp_controller
 
 	public function ext_manager($event)
 	{
+		$this->u_action = $event['u_action'];
+
 		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
+
+		if ($this->request->is_set_post('extonoff_enable_all') || $this->request->is_set_post('extonoff_disable_all'))
+		{
+			$this->enable_disable_confirm();
+			return;
+		}
 
 		$ext_count_available = count($this->extension_manager->all_available());
 		$ext_count_configured = count($this->extension_manager->all_configured());
@@ -216,32 +220,28 @@ class acp_controller
 			'EXTONOFF_INTEGRATION' 			=> $this->config['extonoff_enable_integration'],
 			'EXTONOFF_ACTIVE_EXTS'			=> $ext_count_enabled,
 			'EXTONOFF_INACTIVE_EXTS'		=> $ext_count_disabled,
-			'EXTONOFF_NOT_INSTALLED_EXTS'	=> $ext_count_available - $ext_count_configured
+			'EXTONOFF_NOT_INSTALLED_EXTS'	=> $ext_count_available - $ext_count_configured,
 		]);
-
-		if ($this->request->is_set_post('extonoff_enable_all') || $this->request->is_set_post('extonoff_disable_all'))
-		{
-			$this->set_page_url($event['u_action']);
-			$this->enable_disable_confirm();
-			return;
-		}
 	}
 
-	public function acp_module()
+	public function acp_module($u_action)
 	{
-		if ($this->request->is_set_post('extonoff_enable_all') || $this->request->is_set_post('extonoff_disable_all'))
-		{
-			$this->enable_disable_confirm();
-			return;
-		}
-
-		add_form_key('chris1278_extonoff_settings');
+		$this->u_action = $u_action;
 
 		$this->language->add_lang('acp/extensions');
 		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
 
-		$ext_count_enabled = count($this->extension_manager->all_enabled());
-		$ext_count_disabled = count($this->extension_manager->all_disabled());
+		add_form_key('chris1278_extonoff_settings');
+
+		if ($this->request->is_set_post('extonoff_enable_all') || $this->request->is_set_post('extonoff_disable_all'))
+		{
+			if (!$this->request->is_set_post('extonoff_confirm_box') && !check_form_key('chris1278_extonoff_settings'))
+			{
+				trigger_error($this->language->lang('FORM_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
+			}
+			$this->enable_disable_confirm();
+			return;
+		}
 
 		if ($this->request->is_set_post('submit'))
 		{
@@ -255,6 +255,9 @@ class acp_controller
 			trigger_error($this->language->lang('EXTONOFF_MSG_SETTINGS_SAVED') . adm_back_link($this->u_action));
 		}
 
+		$ext_count_enabled = count($this->extension_manager->all_enabled());
+		$ext_count_disabled = count($this->extension_manager->all_disabled());
+
 		$this->template->assign_vars([
 			'EXTONOFF_ACTIVE_EXTS'			=> $ext_count_enabled - 1,
 			'EXTONOFF_INACTIVE_EXTS'		=> $ext_count_disabled,
@@ -263,11 +266,6 @@ class acp_controller
 			'EXTONOFF_ENABLE_CONFIRMATION'	=> $this->config['extonoff_enable_confirmation'],
 			'U_ACTION'						=> $this->u_action,
 		]);
-	}
-
-	public function set_page_url($u_action)
-	{
-		$this->u_action = $u_action;
 	}
 
 	public function todo()
