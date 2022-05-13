@@ -29,13 +29,13 @@ class acp_listener implements EventSubscriberInterface
 		];
 	}
 
-	public function ext_manager($event)
-	{
-		$this->extonoff->ext_manager($event);
-	}
-
 	public function todo()
 	{
 		$this->extonoff->todo();
+	}
+
+	public function ext_manager($event)
+	{
+		$this->extonoff->ext_manager($event);
 	}
 }

@@ -5,7 +5,7 @@
 <p>{{ lang('EXTONOFF_EXPLAIN_2') }}</p>
 <p>{{ lang('EXTONOFF_EXPLAIN_3') }}</p>
 
-<form method="post" action="{{ U_ACTION }}">
+<form id="extonoff_settings" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_ACTIVATE_OPTION') }}</legend>
 		<dl>
@@ -27,9 +27,7 @@
 			</dd>
 		</dl>
 	</fieldset>
-</form>
 	
-<form id="extonoff_settings" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_SETTINGS_TITLE') }}</legend>
 		<dl>
