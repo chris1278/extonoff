@@ -23,6 +23,7 @@ class v_1_0_1_database extends \phpbb\db\migration\migration
 			['config.add',		['extonoff_enable_integration', 0]],
 			['config.add',		['extonoff_enable_log', 1]],
 			['config.add',		['extonoff_enable_confirmation', 1]],
+			['config.add',		['extonoff_enable_migrations', 0]],
 			['config.add',		['extonoff_exec_todo', 0]],
 			['config.add',		['extonoff_todo_purge_cache', 0]],
 			['config_text.add', ['extonoff_todo_add_log', '']],

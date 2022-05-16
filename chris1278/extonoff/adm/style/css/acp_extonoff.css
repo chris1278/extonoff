@@ -1,3 +1,5 @@
+/* ACP module */
+
 fieldset {
 	border-radius: 10px;
 }
@@ -34,4 +36,27 @@ input[type="submit"]:disabled {
 .extonoff_default {
 	margin-top: 1em;
 	font-size: .9em;
+}
+
+/* Ext manager */
+
+#extonoff_button_enable,
+#extonoff_button_disable {
+	float: right;
+}
+
+.extonoff_migration_icon {
+	float: right;
+	cursor: help;
+}
+
+.extonoff_migration_icon:before {
+	font-family: FontAwesome;
+	content: "\f062";
+}
+
+/* Confirm box */
+
+#confirm h2 {
+	margin-bottom: .25em;
 }

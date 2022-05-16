@@ -22,6 +22,7 @@ class acp_controller
 	protected $user;
 	protected $cache;
 	protected $u_action;
+	protected $migrator;
 
 	public function __construct(
 		\phpbb\extension\manager $ext_manager,
@@ -32,7 +33,8 @@ class acp_controller
 		\phpbb\template\template $template,
 		\phpbb\log\log $log,
 		\phpbb\user $user,
-		\phpbb\cache\driver\driver_interface $cache
+		\phpbb\cache\driver\driver_interface $cache,
+		\phpbb\db\migrator $migrator
 	)
 	{
 		$this->extension_manager	= $ext_manager;
@@ -44,6 +46,7 @@ class acp_controller
 		$this->log					= $log;
 		$this->user					= $user;
 		$this->cache				= $cache;
+		$this->migrator				= $migrator;
 	}
 
 	public function enable_disable_confirm()
@@ -51,6 +54,7 @@ class acp_controller
 		if ($this->request->is_set_post('extonoff_disable_all'))
 		{
 			$ext_count_enabled_clean = count($this->extension_manager->all_enabled()) - 1;
+
 			if ($this->config['extonoff_enable_confirmation'])
 			{
 				if (confirm_box(true))
@@ -78,7 +82,8 @@ class acp_controller
 		}
 		else if ($this->request->is_set_post('extonoff_enable_all'))
 		{
-			$ext_count_disabled = count($this->extension_manager->all_disabled());
+			$ext_count_disabled = count($this->remove_exts_with_migrations($this->extension_manager->all_disabled()));
+
 			if ($this->config['extonoff_enable_confirmation'])
 			{
 				if (confirm_box(true))
@@ -152,7 +157,8 @@ class acp_controller
 		}
 		else if ($action == "enable")
 		{
-			$ext_list_disabled = $this->extension_manager->all_disabled();
+			$ext_list_disabled = $this->remove_exts_with_migrations($this->extension_manager->all_disabled());
+
 			$ext_count_disabled = count($ext_list_disabled);
 			$ext_count_success = 0;
 
@@ -211,16 +217,22 @@ class acp_controller
 			return;
 		}
 
+		$ext_list_disabled = $this->extension_manager->all_disabled();
+		$ext_list_migrations_technames = $this->get_exts_with_migration_technames($ext_list_disabled);
+
 		$ext_count_available = count($this->extension_manager->all_available());
 		$ext_count_configured = count($this->extension_manager->all_configured());
 		$ext_count_enabled = count($this->extension_manager->all_enabled());
-		$ext_count_disabled = count($this->extension_manager->all_disabled());
+		$ext_count_disabled = count($ext_list_disabled);
+		$ext_count_migrations = count($ext_list_migrations_technames);
 
 		$this->template->assign_vars([
 			'EXTONOFF_INTEGRATION' 			=> $this->config['extonoff_enable_integration'],
-			'EXTONOFF_ACTIVE_EXTS'			=> $ext_count_enabled,
-			'EXTONOFF_INACTIVE_EXTS'		=> $ext_count_disabled,
-			'EXTONOFF_NOT_INSTALLED_EXTS'	=> $ext_count_available - $ext_count_configured,
+			'EXTONOFF_COUNT_ACTIVE'			=> $ext_count_enabled,
+			'EXTONOFF_COUNT_INACTIVE'		=> $ext_count_disabled,
+			'EXTONOFF_COUNT_NOT_INSTALLED'	=> $ext_count_available - $ext_count_configured,
+			'EXTONOFF_COUNT_HAS_MIGRATION'	=> $ext_count_migrations,
+			'EXTONOFF_MIGRATION_TECHNAMES'	=> $ext_list_migrations_technames,
 		]);
 	}
 
@@ -252,18 +264,20 @@ class acp_controller
 			$this->config->set('extonoff_enable_integration', $this->request->variable('extonoff_enable_integration', 0));
 			$this->config->set('extonoff_enable_log', $this->request->variable('extonoff_enable_log', 0));
 			$this->config->set('extonoff_enable_confirmation', $this->request->variable('extonoff_enable_confirmation', 0));
+			$this->config->set('extonoff_enable_migrations', $this->request->variable('extonoff_enable_migrations', 0));
 			trigger_error($this->language->lang('EXTONOFF_MSG_SETTINGS_SAVED') . adm_back_link($this->u_action));
 		}
 
 		$ext_count_enabled = count($this->extension_manager->all_enabled());
-		$ext_count_disabled = count($this->extension_manager->all_disabled());
+		$ext_count_disabled = count($this->remove_exts_with_migrations($this->extension_manager->all_disabled()));
 
 		$this->template->assign_vars([
-			'EXTONOFF_ACTIVE_EXTS'			=> $ext_count_enabled - 1,
-			'EXTONOFF_INACTIVE_EXTS'		=> $ext_count_disabled,
+			'EXTONOFF_COUNT_ACTIVE'			=> $ext_count_enabled - 1,
+			'EXTONOFF_COUNT_INACTIVE'		=> $ext_count_disabled,
 			'EXTONOFF_ENABLE_INTEGRATION'	=> $this->config['extonoff_enable_integration'],
 			'EXTONOFF_ENABLE_LOG'			=> $this->config['extonoff_enable_log'],
 			'EXTONOFF_ENABLE_CONFIRMATION'	=> $this->config['extonoff_enable_confirmation'],
+			'EXTONOFF_ENABLE_MIGRATIONS'	=> $this->config['extonoff_enable_migrations'],
 			'U_ACTION'						=> $this->u_action,
 		]);
 	}
@@ -315,5 +329,50 @@ class acp_controller
 			'user_ip'			=> $this->user->ip,
 			'timestamp'			=> time(),
 		]);
+	}
+
+	private function remove_exts_with_migrations(array $ext_list): array
+	{
+		if (!$this->config['extonoff_enable_migrations'])
+		{
+			foreach ($ext_list as $ext_name => $value)
+			{
+				$ext_path = $this->extension_manager->get_extension_path($ext_name, true);
+				if ($this->has_migration($ext_name, $ext_path))
+				{
+					unset($ext_list[$ext_name]);
+				}
+			}
+		}
+
+		return $ext_list;
+	}
+
+	private function get_exts_with_migration_technames(array $ext_list): array
+	{
+		$tech_names = [];
+
+		foreach ($ext_list as $ext_name => &$ext_value)
+		{
+			$ext_path = $this->extension_manager->get_extension_path($ext_name, true);
+			if ($this->has_migration($ext_name, $ext_path))
+			{
+				$tech_names[] = $ext_name;
+			}
+		}
+
+		return $tech_names;
+	}
+
+	private function has_migration(string $ext_name, string $ext_path): bool
+	{
+		$migrations = $this->extension_manager->get_finder()->extension_directory('/migrations')->find_from_extension($ext_name, $ext_path);
+		$migrations_classes = $this->extension_manager->get_finder()->get_classes_from_files($migrations);
+
+		$this->migrator->set_migrations($migrations_classes);
+		$migrations = $this->migrator->get_installable_migrations();
+		$this->migrator->set_migrations([]);
+
+		return (count($migrations) > 0);
 	}
 }

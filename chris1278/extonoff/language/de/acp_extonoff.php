@@ -45,33 +45,44 @@ $lang = array_merge($lang, [
 	// settings buttons
 	'EXTONOFF_ACTIVATE_OPTION'				=> 'Alle Erweiterungen aktivieren/deaktivieren',
 	'EXTONOFF_DEACTIVATE'					=> 'Alle Erweiterungen deaktivieren',
-	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'Durch drücken des Buttons „Alle Erweiterungen deaktivieren“ werden alle aktivierten Erweiterungen deaktiviert, mit Ausnahme der Erweiterung „Enable/disable extensions completely“. Diese musst du manuell deaktivieren.',
-	'EXTONOFF_ALL_DISABLE'					=> 'Alle Erweiterungen deaktivieren',
+	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'Durch drücken des Buttons „Alle deaktivieren“ werden alle aktivierten Erweiterungen deaktiviert, mit Ausnahme der Erweiterung „Enable/disable extensions completely“. Diese musst du manuell deaktivieren.',
 	'EXTONOFF_ACTIVATE'						=> 'Alle Erweiterungen aktivieren',
-	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'Durch drücken des Buttons „Alle Erweiterungen aktivieren“ werden alle installierten aber deaktivierten Erweiterungen aktiviert.',
-	'EXTONOFF_ALL_ENABLE'					=> 'Alle Erweiterungen aktivieren',
+	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'Durch drücken des Buttons „Alle aktivieren“ werden alle installierten aber deaktivierten Erweiterungen aktiviert.',
 
 	// settings
 	'EXTONOFF_SETTINGS_TITLE'				=> 'Einstellungen',
 	'EXTONOFF_INTEGRATION'					=> 'Integration in „Erweiterungen verwalten“',
 	'EXTONOFF_INTEGRATION_EXPLAIN'			=> 'Wenn du diese Option aktivierst, werden in der Ansicht „Erweiterungen verwalten“ ebenfalls Buttons eingeblendet, mit denen du auch dort alle Erweiterungen aktiveren bzw. deaktivieren kannst. Ausserdem wird die Anzahl der aktivierten, deaktivierten und nicht installierten Erweiterungen angezeigt.',
 	'EXTONOFF_LOG'							=> 'Log-Eintrag',
-	'EXTONOFF_LOG_EXPLAIN'					=> 'Hier kannst du festlegen, ob bei den Aktionen „Alle Erweiterungen aktivieren“ und „Alle Erweiterungen deaktivieren“ ein Eintrag im Administrator-Log hinzugefügt werden soll.',
+	'EXTONOFF_LOG_EXPLAIN'					=> 'Hier kannst du festlegen, ob bei den Aktionen „Alle aktivieren“ und „Alle deaktivieren“ ein Eintrag im Administrator-Log hinzugefügt werden soll.',
 	'EXTONOFF_CONFIRMATION'					=> 'Rückfrage',
-	'EXTONOFF_CONFIRMATION_EXPLAIN'			=> 'Hier kannst du festlegen, ob bei den Aktionen „Alle Erweiterungen aktivieren“ und „Alle Erweiterungen deaktivieren“ eine Rückfrage erfolgen soll, die bestätigt werden muss.',
+	'EXTONOFF_CONFIRMATION_EXPLAIN'			=> 'Hier kannst du festlegen, ob bei den Aktionen „Alle aktivieren“ und „Alle deaktivieren“ eine Rückfrage erfolgen soll, die bestätigt werden muss.',
+
+	// settings expert
+	'EXTONOFF_EXPERT_SETTINGS_TITLE'		=> 'Experten-Einstellungen',
+	'EXTONOFF_MIGRATIONS'					=> 'Erlaube Migrationen',
+	'EXTONOFF_MIGRATIONS_EXPLAIN'			=> 'Wenn du diese Option aktivierst, dann können bei der Aktion „Alle aktivieren“ auch diejenigen Erweiterungen aktiviert werden, bei denen neue Migrationsdateien vorliegen, die noch nicht installiert wurden. Das trifft auf aktualisierte Erweiterungen zu, die einen Ordner „migrations“ enthalten. Ohne diese Option müssen solche Erweiterungen manuell aktiviert werden, was empfohlen wird.',
+
+	// ext manager
+	'EXTONOFF_ALL_DISABLE'					=> 'Alle deaktivieren',
+	'EXTONOFF_ALL_ENABLE'					=> 'Alle aktivieren',
+	'EXTONOFF_INSTALLED'					=> 'installiert',
+	'EXTONOFF_NOT_INSTALLED'				=> 'nicht installiert',
+	'EXTONOFF_HAS_MIGRATION'				=> 'neue Migrationen',
 
 	// misc
 	'EXTONOFF_DEFAULT'						=> 'Standard',
-	'EXTONOFF_INSTALLED'					=> 'installiert',
-	'EXTONOFF_NOT_INSTALLED'				=> 'nicht installiert',
 	'EXTONOFF_EXTENSION_PLURAL'				=> [
 		0 => "0 Erweiterungen",
 		1 => "%u Erweiterung",
 		2 => "%u Erweiterungen",
 	],
 
+	// tooltips
+	'EXTONOFF_TOOLTIP_HAS_MIGRATION'		=> 'Diese Erweiterung hat neue Migrationen, die beim aktivieren der Erweiterung übernommen werden.',
+
 	// messages
-	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'Der Vorgang „Alle Erweiterungen aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
+	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'Der Vorgang „Alle aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
 	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'Einstellungen erfolgreich gespeichert.',
 	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Bist du dir sicher, dass du %s deaktivieren möchtest?',
 	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Bist du dir sicher, dass du %s aktivieren möchtest?',
