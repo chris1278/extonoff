@@ -8,13 +8,14 @@
 <form id="extonoff_settings" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_ACTIVATE_OPTION') }}</legend>
+
 		<dl>
 			<dt>
 				<label>{{ lang('EXTONOFF_DEACTIVATE') ~ lang('COLON') }}</label><br>
 				<span>{{ lang('EXTONOFF_DEACTIVATE_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }} ({{ EXTONOFF_ACTIVE_EXTS }})"{{ EXTONOFF_ACTIVE_EXTS == 0 ? ' disabled' }}></label>
+				<label><input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }} ({{ EXTONOFF_COUNT_ACTIVE }})"{{ EXTONOFF_COUNT_ACTIVE == 0 ? ' disabled' }}></label>
 			</dd>
 		</dl>
 		<dl>
@@ -23,13 +24,14 @@
 				<span>{{ lang('EXTONOFF_ACTIVATE_EXPLAIN') }}</span>
 			</dt>
 			<dd>
-				<label><input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }} ({{ EXTONOFF_INACTIVE_EXTS }})"{{ EXTONOFF_INACTIVE_EXTS == 0 ? ' disabled' }}></label>
+				<label><input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }} ({{ EXTONOFF_COUNT_INACTIVE }})"{{ EXTONOFF_COUNT_INACTIVE == 0 ? ' disabled' }}></label>
 			</dd>
 		</dl>
 	</fieldset>
 	
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_SETTINGS_TITLE') }}</legend>
+
 		<dl>
 			<dt>
 				<label>{{ lang('EXTONOFF_INTEGRATION') ~ lang('COLON') }}</label><br>
@@ -63,6 +65,22 @@
 				<label><input type="radio" class="radio" name="extonoff_enable_confirmation" value="1"{{ EXTONOFF_ENABLE_CONFIRMATION == 1 ? ' checked' }}> {{ lang('YES') }}</label>
 				<label><input type="radio" class="radio" name="extonoff_enable_confirmation" value="0"{{ EXTONOFF_ENABLE_CONFIRMATION == 0 ? ' checked' }}> {{ lang('NO') }}</label>
 				{{ _self.extonoff_default(lang('YES')) }}
+			</dd>
+		</dl>
+	</fieldset>
+
+	<fieldset>
+		<legend>{{ lang('EXTONOFF_EXPERT_SETTINGS_TITLE') }}</legend>
+	
+		<dl>
+			<dt>
+				<label>{{ lang('EXTONOFF_MIGRATIONS') ~ lang('COLON') }}</label><br>
+				<span>{{ lang('EXTONOFF_MIGRATIONS_EXPLAIN') }}</span>
+			</dt>
+			<dd>
+				<label><input type="radio" class="radio" name="extonoff_enable_migrations" value="1"{{ EXTONOFF_ENABLE_MIGRATIONS == 1 ? ' checked' }}> {{ lang('YES') }}</label>
+				<label><input type="radio" class="radio" name="extonoff_enable_migrations" value="0"{{ EXTONOFF_ENABLE_MIGRATIONS == 0 ? ' checked' }}> {{ lang('NO') }}</label>
+				{{ _self.extonoff_default(lang('NO')) }}
 			</dd>
 		</dl>
 	</fieldset>

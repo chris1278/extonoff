@@ -11,6 +11,7 @@ services:
             - '@log'
             - '@user'
             - '@cache.driver'
+            - '@migrator'
     chris1278.extonoff.listener:
         class: chris1278\extonoff\event\acp_listener
         arguments:

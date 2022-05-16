@@ -45,30 +45,41 @@ $lang = array_merge($lang, [
 	// settings buttons
 	'EXTONOFF_ACTIVATE_OPTION'				=> 'All Extensions enable/disable',
 	'EXTONOFF_DEACTIVATE'					=> 'Disable all extensions',
-	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'By pressing the button "Disable all extensions", all activated extensions will be deactivated execept for the extension "Enable /disable extensions completely". You have to deactivate them manually.',
-	'EXTONOFF_ALL_DISABLE'					=> 'Disable all extensions',
-	'EXTONOFF_ACTIVATE'						=> 'Activate all extensions',
-	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'By pressing the "Activate all extensions" button, all installed but deactivated extensions will be activated.',
-	'EXTONOFF_ALL_ENABLE'					=> 'Activate all extensions',
+	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'By pressing the button "Disable all", all activated extensions will be deactivated execept for the extension "Enable /disable extensions completely". You have to deactivate them manually.',
+	'EXTONOFF_ACTIVATE'						=> 'Enable all extensions',
+	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'By pressing the "Enable all" button, all installed but deactivated extensions will be activated.',
 
 	// settings
 	'EXTONOFF_SETTINGS_TITLE'				=> 'Settings',
-	'EXTONOFF_INTEGRATION'					=> 'Activate additional buttons',
+	'EXTONOFF_INTEGRATION'					=> 'Integration with "Manage extensions"',
 	'EXTONOFF_INTEGRATION_EXPLAIN'			=> 'If you activate this option, buttons are also displayed in the "Manage extensions" view with which you can activate or deactivate all extensions there. In addition, the number of activated, deactivated and not installed extensions is displayed.',
 	'EXTONOFF_LOG'							=> 'Log entry',
-	'EXTONOFF_LOG_EXPLAIN'					=> 'Here you can specify whether an entry should be added to the administrator log for the actions "Activate all extensions" and "Deactivate all extensions".',
+	'EXTONOFF_LOG_EXPLAIN'					=> 'Here you can specify whether an entry should be added to the administrator log for the actions "Enable all" and "Disable all".',
 	'EXTONOFF_CONFIRMATION'					=> 'Confirmation',
-	'EXTONOFF_CONFIRMATION_EXPLAIN'			=> 'Here you can specify whether the actions "Activate all extensions" and "Deactivate all extensions" should be prompted and must be confirmed.',
+	'EXTONOFF_CONFIRMATION_EXPLAIN'			=> 'Here you can specify whether the actions "Enable all" and "Disable all" should be prompted and must be confirmed.',
+
+	// settings expert
+	'EXTONOFF_EXPERT_SETTINGS_TITLE'		=> 'Expert settings',
+	'EXTONOFF_MIGRATIONS'					=> 'Allow migrations',
+	'EXTONOFF_MIGRATIONS_EXPLAIN'			=> 'If you activate this option, the "Enable all" action can also activate those extensions that have new migration files that have not yet been installed. This applies to updated extensions that contain a "migrations" folder. Without this option, such extensions must be activated manually, which is recommended.',
+
+	// ext manager
+	'EXTONOFF_ALL_DISABLE'					=> 'Disable all',
+	'EXTONOFF_ALL_ENABLE'					=> 'Enable all',
+	'EXTONOFF_INSTALLED'					=> 'installed',
+	'EXTONOFF_NOT_INSTALLED'				=> 'not installed',
+	'EXTONOFF_HAS_MIGRATION'				=> 'new migrations',
 
 	// misc
 	'EXTONOFF_DEFAULT'						=> 'Default',
-	'EXTONOFF_INSTALLED'					=> 'installed',
-	'EXTONOFF_NOT_INSTALLED'				=> 'not installed',
 	'EXTONOFF_EXTENSION_PLURAL'				=> [
 		0 => "0 extensions",
 		1 => "%u extension",
 		2 => "%u extensions",
 	],
+
+	// tooltips
+	'EXTONOFF_TOOLTIP_HAS_MIGRATION'		=> 'This extension has new migrations that are applied upon activation of the extension.',
 
 	// messages
 	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
