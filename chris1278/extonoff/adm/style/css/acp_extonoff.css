@@ -38,6 +38,12 @@ input[type="submit"]:disabled {
 	font-size: .9em;
 }
 
+.extonoff_copyright {
+	margin-top: 1em;
+	text-align: center;
+	font-size: .75em;
+}
+
 /* Ext manager */
 
 #extonoff_button_enable,
@@ -50,7 +56,7 @@ input[type="submit"]:disabled {
 	cursor: help;
 }
 
-.extonoff_migration_icon:before {
+.extonoff_migration_icon:after {
 	font-family: FontAwesome;
 	content: "\f062";
 }

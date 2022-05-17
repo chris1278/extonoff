@@ -2,8 +2,8 @@
 	{% INCLUDECSS 'css/acp_extonoff.css' %}
 	<strong>( {{ 
 		lang('EXTONOFF_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_INACTIVE ~ ' / ' ~ 
-		lang('EXTONOFF_NOT_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_NOT_INSTALLED ~ ' / ' ~ 
-		lang('EXTONOFF_HAS_MIGRATION') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_HAS_MIGRATION
+		lang('EXTONOFF_HAS_MIGRATION') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_HAS_MIGRATION ~ ' / ' ~ 
+		lang('EXTONOFF_NOT_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_NOT_INSTALLED
 	}} )</strong>
 	<form id="extonoff_button_enable" method="post" action="{{ U_ACTION }}">
 		<input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }}"{{ (EXTONOFF_COUNT_INACTIVE - EXTONOFF_COUNT_HAS_MIGRATION == 0) ? ' disabled' }}>
