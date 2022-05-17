@@ -61,7 +61,7 @@ $lang = array_merge($lang, [
 	// settings expert
 	'EXTONOFF_EXPERT_SETTINGS_TITLE'		=> 'Experten-Einstellungen',
 	'EXTONOFF_MIGRATIONS'					=> 'Erlaube Migrationen',
-	'EXTONOFF_MIGRATIONS_EXPLAIN'			=> 'Wenn Sie diese Option aktivieren, dann können bei der Aktion „Alle aktivieren“ auch diejenigen Erweiterungen aktiviert werden, bei denen neue Migrationsdateien vorliegen, die noch nicht installiert wurden. Das trifft auf aktualisierte Erweiterungen zu, die einen Ordner „migrations“ enthalten. Ohne diese Option müssen solche Erweiterungen manuell aktiviert werden, was empfohlen wird.',
+	'EXTONOFF_MIGRATIONS_EXPLAIN'			=> 'Wenn Sie diese Option aktivieren, dann können bei der Aktion „Alle aktivieren“ auch diejenigen Erweiterungen aktiviert werden, bei denen neue Migrationsdateien vorliegen. Das trifft auf aktualisierte Erweiterungen zu, die einen Ordner „migrations“ enthalten. Ohne diese Option müssen solche Erweiterungen manuell aktiviert werden, was empfohlen wird.',
 
 	// ext manager
 	'EXTONOFF_ALL_DISABLE'					=> 'Alle deaktivieren',

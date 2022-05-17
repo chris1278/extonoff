@@ -61,7 +61,7 @@ $lang = array_merge($lang, [
 	// settings expert
 	'EXTONOFF_EXPERT_SETTINGS_TITLE'		=> 'Expert settings',
 	'EXTONOFF_MIGRATIONS'					=> 'Allow migrations',
-	'EXTONOFF_MIGRATIONS_EXPLAIN'			=> 'If you activate this option, the "Enable all" action can also activate those extensions that have new migration files that have not yet been installed. This applies to updated extensions that contain a "migrations" folder. Without this option, such extensions must be activated manually, which is recommended.',
+	'EXTONOFF_MIGRATIONS_EXPLAIN'			=> 'If you activate this option, the "Enable all" action can also activate those extensions that have new migration files. This applies to updated extensions that contain a "migrations" folder. Without this option, such extensions must be activated manually, which is recommended.',
 
 	// ext manager
 	'EXTONOFF_ALL_DISABLE'					=> 'Disable all',
