@@ -1,3 +1,6 @@
-.gitattributes	export-ignore
-/extonoff.json	export-ignore
-/README.md	export-ignore
+.editorconfig export-ignore
+.gitattributes export-ignore
+extonoff.json export-ignore
+extonoff_changelog.md export-ignore
+LICENSE export-ignore
+README.md export-ignore
