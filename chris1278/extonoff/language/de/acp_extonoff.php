@@ -37,6 +37,11 @@ if (empty($lang) || !is_array($lang))
 // ’ « » “ ” … „ “
 
 $lang = array_merge($lang, [
+	// language pack author
+	'EXTONOFF_LANG_DESC'					=> 'Deutsch (Du)',
+	'EXTONOFF_LANG_EXT_VER' 				=> '1.1.0',
+	'EXTONOFF_LANG_AUTHOR' 					=> 'chris1278 & LukeWCS',
+
 	// settings head
 	'EXTONOFF_EXPLAIN_1'					=> 'Hier hast du die Möglichkeit alle Erweiterungen auf einmal zu deaktivieren bzw. zu aktivieren.',
 	'EXTONOFF_EXPLAIN_2'					=> 'Zusätzlich hast du die Möglichkeit dir auch entsprechend die Buttons direkt in der Ansicht „Erweiterungen verwalten“ anzeigen zu lassen.',
@@ -83,9 +88,10 @@ $lang = array_merge($lang, [
 
 	// messages
 	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'Der Vorgang „Alle aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
-	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'Einstellungen erfolgreich gespeichert.',
+	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Einstellungen erfolgreich gespeichert.',
 	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Bist du dir sicher, dass du %s deaktivieren möchtest?',
 	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Bist du dir sicher, dass du %s aktivieren möchtest?',
 	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u von %2$u aktivierten Erweiterungen wurden deaktiviert.',
 	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u von %2$u deaktivierten Erweiterungen wurden aktiviert.',
+	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Hinweis: Das Sprachpaket dieser Erweiterung ist nicht mehr aktuell.',
 ]);

@@ -5,6 +5,12 @@
 <p>{{ lang('EXTONOFF_EXPLAIN_2') }}</p>
 <p>{{ lang('EXTONOFF_EXPLAIN_3') }}</p>
 
+{% if EXTONOFF_NOTES %}
+<div class="errorbox notice">
+	{{ EXTONOFF_NOTES }}
+</div>
+{% endif %}
+
 <form id="extonoff_settings" method="post" action="{{ U_ACTION }}">
 	<fieldset>
 		<legend>{{ lang('EXTONOFF_ACTIVATE_OPTION') }}</legend>
@@ -90,12 +96,13 @@
 		<input class="button2" type="reset" id="reset" name="reset" value="{{ lang('RESET') }}">
 	</p>
 
-	<p class="extonoff_copyright">
-		{{ EXTONOFF_EXT_NAME }} {{ EXTONOFF_EXT_VER }} &copy; 2022 chris1278 &amp; LukeWCS<br />
-	</p>
-
 {S_FORM_TOKEN}
 </form>
+
+<p class="extonoff_footer">
+	{{ EXTONOFF_EXT_NAME }} {{ EXTONOFF_EXT_VER }} &copy; 2022 chris1278 &amp; LukeWCS<br>
+	{{ lang('EXTONOFF_LANG_DESC')|e('html') }} {{ lang('EXTONOFF_LANG_EXT_VER')|e('html') }} &bull; {{ lang('EXTONOFF_LANG_AUTHOR')|e('html') }}
+</p>
 
 {% INCLUDE 'overall_footer.html' %}
 

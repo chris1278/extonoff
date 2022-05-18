@@ -10,11 +10,11 @@
 
 namespace chris1278\extonoff\migrations;
 
-class v_1_0_1_database extends \phpbb\db\migration\migration
+class v_1_1_0_database extends \phpbb\db\migration\migration
 {
 	public static function depends_on()
 	{
-		return ['\chris1278\extonoff\migrations\v_1_0_1_acp_module'];
+		return ['\chris1278\extonoff\migrations\v_1_1_0_acp_module'];
 	}
 
 	public function update_data()

@@ -37,6 +37,11 @@ if (empty($lang) || !is_array($lang))
 // ’ « » “ ” … „ “
 
 $lang = array_merge($lang, [
+	// language pack author
+	'EXTONOFF_LANG_DESC'					=> 'English',
+	'EXTONOFF_LANG_EXT_VER' 				=> '1.1.0',
+	'EXTONOFF_LANG_AUTHOR'	 				=> 'chris1278 & LukeWCS',
+
 	// settings head
 	'EXTONOFF_EXPLAIN_1'					=> 'Here you have the option of deactivating or activating all extensions at once.',
 	'EXTONOFF_EXPLAIN_2'					=> 'You also have the option of displaying the buttons directly in the "Manage Extensions" view.',
@@ -83,9 +88,10 @@ $lang = array_merge($lang, [
 
 	// messages
 	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
-	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'Settings saved successfully.',
+	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Settings saved successfully.',
 	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Are you sure that you wish to disable %s?',
 	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Are you sure that you wish to enable %s?',
 	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u of %2$u enabled extensions have been disabled.',
 	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u of %2$u disabled extensions have been enabled.',
+	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Note: The language pack for this extension is no longer up-to-date.',
 ]);
