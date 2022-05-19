@@ -45,7 +45,7 @@ $lang = array_merge($lang, [
 	// settings head
 	'EXTONOFF_EXPLAIN_1'					=> 'Hier hast du die Möglichkeit alle Erweiterungen auf einmal zu deaktivieren bzw. zu aktivieren.',
 	'EXTONOFF_EXPLAIN_2'					=> 'Zusätzlich hast du die Möglichkeit dir auch entsprechend die Buttons direkt in der Ansicht „Erweiterungen verwalten“ anzeigen zu lassen.',
-	'EXTONOFF_EXPLAIN_3'					=> '<strong style="color: red">Achtung:</strong>  Es lassen sich nur installierte Erweiterungen aktivieren bzw. deaktivieren. Erweiterungen die zwar in der Liste aufgeführt, aber noch nicht installiert sind, werden dabei nicht berücksichtigt.',
+	'EXTONOFF_EXPLAIN_3'					=> '<strong style="color: red">Achtung:</strong> Es lassen sich nur installierte Erweiterungen aktivieren. Erweiterungen die zwar in der Liste aufgeführt, aber noch nicht installiert sind, werden dabei nicht berücksichtigt.',
 
 	// settings buttons
 	'EXTONOFF_ACTIVATE_OPTION'				=> 'Alle Erweiterungen aktivieren/deaktivieren',
@@ -57,7 +57,7 @@ $lang = array_merge($lang, [
 	// settings
 	'EXTONOFF_SETTINGS_TITLE'				=> 'Einstellungen',
 	'EXTONOFF_INTEGRATION'					=> 'Integration in „Erweiterungen verwalten“',
-	'EXTONOFF_INTEGRATION_EXPLAIN'			=> 'Wenn du diese Option aktivierst, werden in der Ansicht „Erweiterungen verwalten“ ebenfalls Buttons eingeblendet, mit denen du auch dort alle Erweiterungen aktiveren bzw. deaktivieren kannst. Ausserdem wird die Anzahl der aktivierten, deaktivierten und nicht installierten Erweiterungen angezeigt.',
+	'EXTONOFF_INTEGRATION_EXPLAIN'			=> 'Wenn du diese Option aktivierst, werden in der Ansicht „Erweiterungen verwalten“ ebenfalls Buttons eingeblendet, mit denen du auch dort alle Erweiterungen aktiveren bzw. deaktivieren kannst. Zusätzlich wird die Anzahl der aktivierten, deaktivierten und nicht installierten Erweiterungen angezeigt, sowie die Anzahl der Erweiterungen mit neuen Migrationsdateien.',
 	'EXTONOFF_LOG'							=> 'Log-Eintrag',
 	'EXTONOFF_LOG_EXPLAIN'					=> 'Hier kannst du festlegen, ob bei den Aktionen „Alle aktivieren“ und „Alle deaktivieren“ ein Eintrag im Administrator-Log hinzugefügt werden soll.',
 	'EXTONOFF_CONFIRMATION'					=> 'Rückfrage',
@@ -87,11 +87,11 @@ $lang = array_merge($lang, [
 	'EXTONOFF_TOOLTIP_HAS_MIGRATION'		=> 'Diese Erweiterung hat neue Migrationen, die beim aktivieren der Erweiterung übernommen werden.',
 
 	// messages
-	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'Der Vorgang „Alle aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
 	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Einstellungen erfolgreich gespeichert.',
 	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Bist du dir sicher, dass du %s deaktivieren möchtest?',
 	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Bist du dir sicher, dass du %s aktivieren möchtest?',
+	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'Der Vorgang „Alle aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
 	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u von %2$u aktivierten Erweiterungen wurden deaktiviert.',
 	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u von %2$u deaktivierten Erweiterungen wurden aktiviert.',
-	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Hinweis: Das Sprachpaket dieser Erweiterung ist nicht mehr aktuell.',
+	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Hinweis: Das Sprachpaket dieser Erweiterung ist nicht mehr aktuell. (Vorhanden: %1$s / Benötigt: %2$s)',
 ]);
