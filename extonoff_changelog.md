@@ -16,7 +16,7 @@ Hinweis: Diese Version ist nicht kompatibel mit 1.0.0. Bevor 1.1.0 installiert w
   * Die Buttons werden gesperrt, wenn eine Aktion nicht möglich ist. Dadurch entfiel die bisherige Fehlermeldung und deren Bestätigung, wenn eine Aktion nicht möglich war.
   * In der Überschrift "Aktivierte Erweiterungen" wird die Anzahl der aktivierten Erweiterungen angezeigt.
   * In der Überschrift "Deaktivierte Erweiterungen" wird die Anzahl der Erweiterungen angezeigt, aufgeteilt nach "installiert", "neue Migrationen" und "nicht installiert".
-  * Deaktivierte Erweiterungen bei denen neue Migrationsdateien vorhanden sind, werden mit einem Aufwärts-Pfeil markiert, und zusätzlich wird die Anzahl neuer Migrationsdateien in Klammern angezeigt.
+  * Deaktivierte Erweiterungen bei denen neue Migrationsdateien vorhanden sind, werden mit einem Aufwärts-Pfeil markiert und zusätzlich wird die Anzahl neuer Migrationsdateien in Klammern angezeigt.
 * ACP Modul (Einstellungen):
   * Die Buttons werden gesperrt, wenn eine Aktion nicht möglich ist. Dadurch entfiel die bisherige Fehlermeldung und deren Bestätigung, wenn eine Aktion nicht möglich war.
   * In der Button-Beschriftung wird jeweils die Anzahl der zu schaltenden Erweiterungen angezeigt.
@@ -28,7 +28,7 @@ Hinweis: Diese Version ist nicht kompatibel mit 1.0.0. Bevor 1.1.0 installiert w
 * Das Sprachpaket-Infosystem von LFWWH übernommen:
   * Übersetzer können ihre Autoren-Infos direkt in 3 Sprachvariablen in `acp_extonoff.php` definieren.
   * Diese Autoren-Infos werden im ACP Modul im Footer angezeigt.
-  * Das System bietet eine Versionsprüfung des Sprachpakets: Ist eine Übersetzung veraltet, bekommt der Administrator im ACP Modul einen Hinweis darauf.
+  * Das System bietet eine Versionsprüfung des Sprachpakets: Ist eine Übersetzung veraltet, bekommt der Administrator einen entsprechenden Hinweis im ACP Modul.
 * Zahlreiche Änderungen in den Sprachdateien sowie etliche neue Sprachvariablen.
 
 #### 1.0.0

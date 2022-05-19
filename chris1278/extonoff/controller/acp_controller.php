@@ -124,9 +124,9 @@ class acp_controller
 		$ext_display_name	= $this->md_manager->get_metadata('display-name');
 		$ext_ver			= $this->md_manager->get_metadata('version');
 		$ext_lang_min_ver	= $this->md_manager->get_metadata()['extra']['lang-min-ver'];
-		$ext_lang_ver 		= $this->get_lang_ver();
+		$ext_lang_ver 		= $this->get_lang_ver('EXTONOFF_LANG_EXT_VER');
 
-		$lang_outdated_msg	= $this->check_lang_ver($ext_lang_min_ver, $ext_lang_ver);
+		$lang_outdated_msg	= $this->check_lang_ver($ext_lang_min_ver, $ext_lang_ver, 'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED');
 		$notes				= ($lang_outdated_msg) ? $this->add_note($notes, $lang_outdated_msg) : '';
 
 		$this->template->assign_vars([
@@ -399,36 +399,35 @@ class acp_controller
 	}
 
 	// Determine the version of the language pack with fallback to 0.0.0
-	private function get_lang_ver()
+	private function get_lang_ver(string $lang_ext_ver): string
 	{
-		return $this->language->is_set('EXTONOFF_LANG_EXT_VER') ? $this->language->lang('EXTONOFF_LANG_EXT_VER') : '0.0.0';
+		return $this->language->is_set($lang_ext_ver) ? $this->language->lang($lang_ext_ver) : '0.0.0';
 	}
 
-	// Check the language pack version for the minimum version
-	private function check_lang_ver($ext_lang_min_ver, $ext_lang_ver): string
+	// Check the language pack version for the minimum version and generate notice if outdated
+	private function check_lang_ver(string $ext_lang_min_ver, string $ext_lang_ver, string $lang_outdated_var): string
 	{
 		$lang_outdated_msg = '';
 
 		if (phpbb_version_compare($ext_lang_min_ver, $ext_lang_ver, '>'))
 		{
-			$lang_outdated_var = 'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED';
-
 			if ($this->language->is_set($lang_outdated_var))
 			{
 				$lang_outdated_msg = $this->language->lang($lang_outdated_var);
 			}
 			else // Fallback if the current language package does not yet have the required variable.
 			{
-				$lang_outdated_msg = 'Note: The language pack for this extension is no longer up-to-date.';
+				$lang_outdated_msg = 'Note: The language pack for this extension is no longer up-to-date. (Installed: %1$s / Needed: %2$s)';
 			}
+			$lang_outdated_msg = sprintf($lang_outdated_msg, $ext_lang_ver, $ext_lang_min_ver);
 		}
 
 		return $lang_outdated_msg;
 	}
 
 	// Add text to submitted messages and convert special characters to HTML entities
-	private function add_note(string $notes, string $msg): string
+	private function add_note(string $messages, string $text): string
 	{
-		return $notes . (($notes != '') ? "\n" : "") . sprintf('<p>%s</p>', htmlentities($msg));
+		return $messages . (($messages != '') ? "\n" : '') . sprintf('<p>%s</p>', htmlentities($text));
 	}
 }

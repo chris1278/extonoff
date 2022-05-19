@@ -45,7 +45,7 @@ $lang = array_merge($lang, [
 	// settings head
 	'EXTONOFF_EXPLAIN_1'					=> 'Here you have the option of deactivating or activating all extensions at once.',
 	'EXTONOFF_EXPLAIN_2'					=> 'You also have the option of displaying the buttons directly in the "Manage Extensions" view.',
-	'EXTONOFF_EXPLAIN_3'					=> '<strong style="color: red">Warning:</strong> Only the extensions that are installed can be activated or deactivated. Extensions that are in the list but are not yet installed are not taken into account.',
+	'EXTONOFF_EXPLAIN_3'					=> '<strong style="color: red">Warning:</strong> Only the extensions that are installed can be activated. Extensions that are in the list but are not yet installed are not taken into account.',
 
 	// settings buttons
 	'EXTONOFF_ACTIVATE_OPTION'				=> 'All Extensions enable/disable',
@@ -57,7 +57,7 @@ $lang = array_merge($lang, [
 	// settings
 	'EXTONOFF_SETTINGS_TITLE'				=> 'Settings',
 	'EXTONOFF_INTEGRATION'					=> 'Integration with "Manage extensions"',
-	'EXTONOFF_INTEGRATION_EXPLAIN'			=> 'If you activate this option, buttons are also displayed in the "Manage extensions" view with which you can activate or deactivate all extensions there. In addition, the number of activated, deactivated and not installed extensions is displayed.',
+	'EXTONOFF_INTEGRATION_EXPLAIN'			=> 'If you activate this option, buttons are also displayed in the "Manage extensions" view with which you can activate or deactivate all extensions there. In addition, the number of activated, deactivated and not installed extensions is displayed, as well as the number of extensions with new migration files.',
 	'EXTONOFF_LOG'							=> 'Log entry',
 	'EXTONOFF_LOG_EXPLAIN'					=> 'Here you can specify whether an entry should be added to the administrator log for the actions "Enable all" and "Disable all".',
 	'EXTONOFF_CONFIRMATION'					=> 'Confirmation',
@@ -87,11 +87,11 @@ $lang = array_merge($lang, [
 	'EXTONOFF_TOOLTIP_HAS_MIGRATION'		=> 'This extension has new migrations that are applied upon activation of the extension.',
 
 	// messages
-	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
 	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Settings saved successfully.',
 	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Are you sure that you wish to disable %s?',
 	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Are you sure that you wish to enable %s?',
+	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
 	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u of %2$u enabled extensions have been disabled.',
 	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u of %2$u disabled extensions have been enabled.',
-	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Note: The language pack for this extension is no longer up-to-date.',
+	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Note: The language pack for this extension is no longer up-to-date. (Installed: %1$s / Needed: %2$s)',
 ]);
