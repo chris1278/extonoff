@@ -70,17 +70,24 @@ class acp_controller
 
 		$ext_count_available = count($this->extension_manager->all_available());
 		$ext_count_configured = count($this->extension_manager->all_configured());
-		$ext_count_enabled = count($this->extension_manager->all_enabled());
-		$ext_count_disabled = count($ext_list_disabled);
 		$ext_count_migrations = count($ext_list_migrations);
+		$ext_count_enabled = count($this->extension_manager->all_enabled());
+		$ext_count_enabled_clean = $ext_count_enabled - 1;
+		$ext_count_disabled = count($ext_list_disabled);
+		$ext_count_disabled_clean = $ext_count_disabled - (!$this->config['extonoff_enable_migrations'] ? $ext_count_migrations : 0);
 
 		$this->template->assign_vars([
-			'EXTONOFF_INTEGRATION' 			=> true,
-			'EXTONOFF_COUNT_ACTIVE'			=> $ext_count_enabled,
-			'EXTONOFF_COUNT_INACTIVE'		=> $ext_count_disabled,
-			'EXTONOFF_COUNT_HAS_MIGRATION'	=> $ext_count_migrations,
-			'EXTONOFF_COUNT_NOT_INSTALLED'	=> $ext_count_available - $ext_count_configured,
-			'EXTONOFF_MIGRATION_EXTS'		=> $ext_list_migrations,
+			'EXTONOFF_INTEGRATION' 				=> true,
+			'EXTONOFF_COUNT_ENABLED'			=> $ext_count_enabled,
+			'EXTONOFF_COUNT_ENABLED_CLEAN'		=> $ext_count_enabled_clean,
+			'EXTONOFF_COUNT_INACTIVE'			=> $ext_count_available - $ext_count_enabled,
+			'EXTONOFF_COUNT_DISABLED'			=> $ext_count_disabled,
+			'EXTONOFF_COUNT_DISABLED_CLEAN'		=> $ext_count_disabled_clean,
+			'EXTONOFF_COUNT_HAS_MIGRATION'		=> $ext_count_migrations,
+			'EXTONOFF_COUNT_NOT_INSTALLED'		=> $ext_count_available - $ext_count_configured,
+			'EXTONOFF_MIGRATION_EXTS'			=> $ext_list_migrations,
+			'EXTONOFF_TOOLTIP_BUTTON_DISABLE'	=> ($ext_count_enabled_clean == 0) ? '' : $this->language->lang('EXTONOFF_TOOLTIP_BUTTON_DISABLE', $this->language->lang('EXTONOFF_EXTENSION_PLURAL', $ext_count_enabled_clean)),
+			'EXTONOFF_TOOLTIP_BUTTON_ENABLE'	=> ($ext_count_disabled_clean == 0) ? '' : $this->language->lang('EXTONOFF_TOOLTIP_BUTTON_ENABLE', $this->language->lang('EXTONOFF_EXTENSION_PLURAL', $ext_count_disabled_clean)),
 		]);
 	}
 
@@ -118,8 +125,8 @@ class acp_controller
 			trigger_error($this->language->lang('EXTONOFF_MSG_SETTINGS_SAVED') . adm_back_link($this->u_action));
 		}
 
-		$ext_count_enabled = count($this->extension_manager->all_enabled());
-		$ext_count_disabled = count($this->remove_exts_with_new_migrations($this->extension_manager->all_disabled()));
+		$ext_count_enabled_clean = count($this->extension_manager->all_enabled()) - 1;
+		$ext_count_disabled_clean = count($this->remove_exts_with_new_migrations($this->extension_manager->all_disabled()));
 
 		$ext_display_name	= $this->md_manager->get_metadata('display-name');
 		$ext_ver			= $this->md_manager->get_metadata('version');
@@ -130,8 +137,8 @@ class acp_controller
 		$notes				= ($lang_outdated_msg) ? $this->add_note($notes, $lang_outdated_msg) : '';
 
 		$this->template->assign_vars([
-			'EXTONOFF_COUNT_ACTIVE'			=> $ext_count_enabled - 1,
-			'EXTONOFF_COUNT_INACTIVE'		=> $ext_count_disabled,
+			'EXTONOFF_COUNT_ENABLED_CLEAN'	=> $ext_count_enabled_clean,
+			'EXTONOFF_COUNT_DISABLED_CLEAN'	=> $ext_count_disabled_clean,
 			'EXTONOFF_ENABLE_INTEGRATION'	=> $this->config['extonoff_enable_integration'],
 			'EXTONOFF_ENABLE_LOG'			=> $this->config['extonoff_enable_log'],
 			'EXTONOFF_ENABLE_CONFIRMATION'	=> $this->config['extonoff_enable_confirmation'],
@@ -213,7 +220,7 @@ class acp_controller
 		}
 		else if ($this->request->is_set_post('extonoff_enable_all'))
 		{
-			$ext_count_disabled = count($this->remove_exts_with_new_migrations($this->extension_manager->all_disabled()));
+			$ext_count_disabled_clean = count($this->remove_exts_with_new_migrations($this->extension_manager->all_disabled()));
 
 			if ($this->config['extonoff_enable_confirmation'])
 			{
@@ -225,7 +232,7 @@ class acp_controller
 				{
 					confirm_box(
 						false,
-						$this->language->lang('EXTONOFF_MSG_CONFIRM_ENABLE', $this->language->lang('EXTONOFF_EXTENSION_PLURAL', $ext_count_disabled)),
+						$this->language->lang('EXTONOFF_MSG_CONFIRM_ENABLE', $this->language->lang('EXTONOFF_EXTENSION_PLURAL', $ext_count_disabled_clean)),
 						build_hidden_fields([
 							'extonoff_enable_all' => true,
 							'extonoff_confirm_box' => true,
@@ -288,15 +295,15 @@ class acp_controller
 		}
 		else if ($action == "enable")
 		{
-			$ext_list_disabled = $this->remove_exts_with_new_migrations($this->extension_manager->all_disabled());
+			$ext_list_disabled_clean = $this->remove_exts_with_new_migrations($this->extension_manager->all_disabled());
 
-			$ext_count_disabled = count($ext_list_disabled);
+			$ext_count_disabled = count($ext_list_disabled_clean);
 			$ext_count_success = 0;
 
 			$this->config->set('extonoff_exec_todo', 1);
 			$this->config->set('extonoff_todo_purge_cache', 1);
 
-			foreach ($ext_list_disabled as $ext_name => $value)
+			foreach ($ext_list_disabled_clean as $ext_name => $value)
 			{
 				$ext_display_name = $this->extension_manager->create_extension_metadata_manager($ext_name)->get_metadata('display-name');
 				$this->template->assign_vars([
@@ -428,6 +435,6 @@ class acp_controller
 	// Add text to submitted messages and convert special characters to HTML entities
 	private function add_note(string $messages, string $text): string
 	{
-		return $messages . (($messages != '') ? "\n" : '') . sprintf('<p>%s</p>', htmlentities($text));
+		return $messages . (($messages != '') ? "\n" : '') . sprintf('<p>%s</p>', $text);
 	}
 }

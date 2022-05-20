@@ -10,7 +10,7 @@
 
 namespace chris1278\extonoff\migrations;
 
-class v_1_1_0_acp_module extends \phpbb\db\migration\migration
+class v_2_0_0_acp_module extends \phpbb\db\migration\migration
 {
 	public static function depends_on()
 	{

@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "With this extension it is possible to deactivate or activate all active extensions at once.",
 	"homepage": "https://www.phpbb.de/community/viewtopic.php?f=149&t=242009",
-	"version": "1.1.0-b15",
+	"version": "2.0.0-b16",
 	"time": "2022-04-23",
 	"license": "GPL-2.0-only",
 	"authors": [

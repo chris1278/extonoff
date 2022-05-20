@@ -1,11 +1,13 @@
 {% if EXTONOFF_INTEGRATION %}
-	{% INCLUDECSS 'css/acp_extonoff.css' %}
-	<strong>( {{ 
-		lang('EXTONOFF_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_INACTIVE ~ ' / ' ~ 
-		lang('EXTONOFF_HAS_MIGRATION') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_HAS_MIGRATION ~ ' / ' ~ 
-		lang('EXTONOFF_NOT_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_NOT_INSTALLED
-	}} )</strong>
+{% spaceless %}
+	<strong>{{ 
+		lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_INACTIVE  ~ ' (' ~
+		lang('EXTONOFF_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_DISABLED ~ ' / ' ~
+		lang('EXTONOFF_HAS_MIGRATION') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_HAS_MIGRATION ~ ' / ' ~
+		lang('EXTONOFF_NOT_INSTALLED') ~ lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_NOT_INSTALLED ~ ')'
+	}}</strong>
+{% endspaceless %}
 	<form id="extonoff_button_enable" method="post" action="{{ U_ACTION }}">
-		<input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }}"{{ (EXTONOFF_COUNT_INACTIVE - EXTONOFF_COUNT_HAS_MIGRATION == 0) ? ' disabled' }}>
+		<input class="button1" type="submit" name="extonoff_enable_all" value="{{ lang('EXTONOFF_ALL_ENABLE') }}" title="{{ EXTONOFF_TOOLTIP_BUTTON_ENABLE|e('html') }}"{{ (EXTONOFF_COUNT_DISABLED_CLEAN == 0) ? ' disabled' }}>
 	</form>
 {% endif %}

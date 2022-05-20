@@ -1,7 +1,11 @@
 {% if EXTONOFF_INTEGRATION %}
+{% spaceless %}
+	<strong>{{ 
+		lang('COLON') ~ ' ' ~ EXTONOFF_COUNT_ENABLED
+	}}</strong>
+{% endspaceless %}
 	{% INCLUDECSS 'css/acp_extonoff.css' %}
-	<strong>( {{ EXTONOFF_COUNT_ACTIVE }} )</strong>
 	<form id="extonoff_button_disable" method="post" action="{{ U_ACTION }}">
-		<input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }}"{{ (EXTONOFF_COUNT_ACTIVE == 1) ? ' disabled' }}>
+		<input class="button1" type="submit" name="extonoff_disable_all" value="{{ lang('EXTONOFF_ALL_DISABLE') }}" title="{{ EXTONOFF_TOOLTIP_BUTTON_DISABLE|e('html') }}"{{ (EXTONOFF_COUNT_ENABLED_CLEAN == 0) ? ' disabled' }}>
 	</form>
 {% endif %}
