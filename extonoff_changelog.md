@@ -1,12 +1,13 @@
-#### 1.1.0
+#### 2.0.0
 
-Danke an Kirk und 69bruno die uns beim testen geholfen haben. :)
+Danke an Kirk und 69bruno die uns beim testen geholfen haben. :-)
 
-Hinweis: Diese Version ist nicht kompatibel mit 1.0.0. Bevor 1.1.0 installiert werden kann, muss 1.0.0 deinstalliert werden (Arbeitsdaten löschen).
+Hinweis: Diese Version ist nicht kompatibel mit 1.0.0. Bevor 2.0.0 installiert werden kann, muss 1.0.0 deinstalliert werden. Dazu im ACP in der Ansicht "ANPASSEN" die Kurzanleitung "EINE ERWEITERUNG KOMPLETT AUS DEM BOARD ENTFERNEN" am Ende der Seite berücksichtigen.
 
 * Fix: Nach der Reaktivierung funktionierten manche Erweiterungen nicht korrekt, was primär auf deren Template Darstellungen bezogen ist. Die Ursache für das Problem war der Twig Cache, der nicht mehr vollständig aufgebaut wurde. Ein Workaround sorgt nun dafür, dass der gesamte Cache nach Aktivierung/Deaktivierung wieder vollständig aufgebaut wird.
 * Fix: Mehrere kleinere Fehler behoben. Unter anderem fehlte im ACP Modul das Security Token, dass in jedem Formular vorhanden sein muss.
 * Wenn eine Erweiterung aufgrund fehlender Voraussetzungen nicht aktiviert werden kann und eine eigene Fehlerbehandlung hat (`trigger_error`), dann unterbricht diese Erweiterung den kompletten Aktivierungsvorgang. Dafür eine zusätzliche Anzeige eingebaut die dann in der Standard Fehlermeldung von phpBB präzise Auskunft darüber gibt, welche Erweiterung den Vorgang unterbrochen hat.
+* Wenn die Aktion "Alle aktivieren" durch eine Erweiterung hart unterbrochen wird, dann kann jetzt trotzdem ein Log Eintrag erzeugt werden, der den partiellen Erfolg protokolliert.
 * Deaktivierte Erweiterungen werden nun auf neue Migrationsdateien geprüft. Sind solche vorhanden, werden die betreffenden Erweiterungen bei der Aktivierung per Standard ignoriert.
 * In der Bestätigungsmeldung die phpBB nach Aktivierung/Deaktivierung angezeigt, wird die Anzahl der erfolgreich geschalteten Erweiterungen und die Gesamtzahl angezeigt. Dadurch ist sofort erkennbar, ob bei einer Aktion eine Erweiterung nicht geschaltet werden konnte.
 * Im Log wird nun ebenfalls die Anzahl der erfolgreich geschalteten Erweiterungen und die Gesamtzahl protokolliert.

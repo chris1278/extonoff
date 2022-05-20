@@ -84,7 +84,9 @@ $lang = array_merge($lang, [
 	],
 
 	// tooltips
-	'EXTONOFF_TOOLTIP_HAS_MIGRATION'		=> 'This extension has new migrations that are applied upon activation of the extension.',
+	'EXTONOFF_TOOLTIP_HAS_MIGRATION'		=> 'This extension has new migration files that are applied when activating the extension.',
+	'EXTONOFF_TOOLTIP_BUTTON_DISABLE'		=> 'Disable %s.',
+	'EXTONOFF_TOOLTIP_BUTTON_ENABLE'		=> 'Enable %s.',
 
 	// messages
 	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Settings saved successfully.',
