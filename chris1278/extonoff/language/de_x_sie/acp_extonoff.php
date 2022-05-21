@@ -89,11 +89,11 @@ $lang = array_merge($lang, [
 	'EXTONOFF_TOOLTIP_BUTTON_ENABLE'		=> '%s aktivieren.',
 
 	// messages
-	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Einstellungen erfolgreich gespeichert.',
 	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Sind Sie sich sicher, dass Sie %s deaktivieren möchten?',
 	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Sind Sie sich sicher, dass Sie %s aktivieren möchten?',
-	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'Der Vorgang „Alle aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
-	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u von %2$u aktivierten Erweiterungen wurden deaktiviert.',
-	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u von %2$u deaktivierten Erweiterungen wurden aktiviert.',
+	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Einstellungen erfolgreich gespeichert.',
+	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'ExtOnOff: Der Vorgang „Alle aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
+	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> 'ExtOnOff: %1$u von %2$u aktivierten Erweiterungen wurden deaktiviert.',
+	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> 'ExtOnOff: %1$u von %2$u deaktivierten Erweiterungen wurden aktiviert.',
 	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Hinweis: Das Sprachpaket dieser Erweiterung ist nicht mehr aktuell. (Vorhanden: %1$s / Benötigt: %2$s)',
 ]);

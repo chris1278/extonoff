@@ -137,16 +137,16 @@ class acp_controller
 		$notes				= ($lang_outdated_msg) ? $this->add_note($notes, $lang_outdated_msg) : '';
 
 		$this->template->assign_vars([
-			'EXTONOFF_COUNT_ENABLED_CLEAN'	=> $ext_count_enabled_clean,
-			'EXTONOFF_COUNT_DISABLED_CLEAN'	=> $ext_count_disabled_clean,
-			'EXTONOFF_ENABLE_INTEGRATION'	=> $this->config['extonoff_enable_integration'],
-			'EXTONOFF_ENABLE_LOG'			=> $this->config['extonoff_enable_log'],
-			'EXTONOFF_ENABLE_CONFIRMATION'	=> $this->config['extonoff_enable_confirmation'],
-			'EXTONOFF_ENABLE_MIGRATIONS'	=> $this->config['extonoff_enable_migrations'],
-			'EXTONOFF_EXT_NAME'				=> $ext_display_name,
-			'EXTONOFF_EXT_VER'				=> $ext_ver,
-			'EXTONOFF_NOTES'				=> $notes,
-			'U_ACTION'						=> $this->u_action,
+			'EXTONOFF_ENABLE_INTEGRATION'		=> $this->config['extonoff_enable_integration'],
+			'EXTONOFF_ENABLE_LOG'				=> $this->config['extonoff_enable_log'],
+			'EXTONOFF_ENABLE_CONFIRMATION'		=> $this->config['extonoff_enable_confirmation'],
+			'EXTONOFF_ENABLE_MIGRATIONS'		=> $this->config['extonoff_enable_migrations'],
+			'EXTONOFF_COUNT_ENABLED_CLEAN'		=> $ext_count_enabled_clean,
+			'EXTONOFF_COUNT_DISABLED_CLEAN'		=> $ext_count_disabled_clean,
+			'EXTONOFF_EXT_NAME'					=> $ext_display_name,
+			'EXTONOFF_EXT_VER'					=> $ext_ver,
+			'EXTONOFF_NOTES'					=> $notes,
+			'U_ACTION'							=> $this->u_action,
 		]);
 	}
 

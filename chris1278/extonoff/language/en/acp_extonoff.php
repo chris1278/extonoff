@@ -89,11 +89,11 @@ $lang = array_merge($lang, [
 	'EXTONOFF_TOOLTIP_BUTTON_ENABLE'		=> 'Enable %s.',
 
 	// messages
-	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Settings saved successfully.',
 	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Are you sure that you wish to disable %s?',
 	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Are you sure that you wish to enable %s?',
-	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
-	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> '%1$u of %2$u enabled extensions have been disabled.',
-	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> '%1$u of %2$u disabled extensions have been enabled.',
+	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Settings saved successfully.',
+	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'ExtOnOff: The "Activate all extensions" operation was interrupted because the following extension could not be activated:',
+	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> 'ExtOnOff: %1$u of %2$u enabled extensions have been disabled.',
+	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> 'ExtOnOff: %1$u of %2$u disabled extensions have been enabled.',
 	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Note: The language pack for this extension is no longer up-to-date. (Installed: %1$s / Needed: %2$s)',
 ]);
