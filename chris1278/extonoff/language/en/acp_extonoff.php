@@ -39,7 +39,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, [
 	// language pack author
 	'EXTONOFF_LANG_DESC'					=> 'English',
-	'EXTONOFF_LANG_EXT_VER' 				=> '1.1.0',
+	'EXTONOFF_LANG_EXT_VER' 				=> '2.0.0',
 	'EXTONOFF_LANG_AUTHOR'	 				=> 'chris1278 & LukeWCS',
 
 	// settings head

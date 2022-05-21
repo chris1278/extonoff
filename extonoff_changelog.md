@@ -1,4 +1,5 @@
 #### 2.0.0
+(2022-05-)
 
 Danke an Kirk und 69bruno die uns beim testen geholfen haben. :-)
 
@@ -16,7 +17,7 @@ Hinweis: Diese Version ist nicht kompatibel mit 1.0.0. Bevor 2.0.0 installiert w
 * Integration in "Erweiterungen Verwalten":
   * Die Buttons werden gesperrt, wenn eine Aktion nicht möglich ist. Dadurch entfiel die bisherige Fehlermeldung und deren Bestätigung, wenn eine Aktion nicht möglich war.
   * In der Überschrift "Aktivierte Erweiterungen" wird die Anzahl der aktivierten Erweiterungen angezeigt.
-  * In der Überschrift "Deaktivierte Erweiterungen" wird die Anzahl der Erweiterungen angezeigt, aufgeteilt nach "installiert", "neue Migrationen" und "nicht installiert".
+  * In der Überschrift "Deaktivierte Erweiterungen" wird die Anzahl der deaktivierten Erweiterungen angezeigt, aufgeteilt nach "installiert", "neue Migrationen" und "nicht installiert".
   * Deaktivierte Erweiterungen bei denen neue Migrationsdateien vorhanden sind, werden mit einem Aufwärts-Pfeil markiert und zusätzlich wird die Anzahl neuer Migrationsdateien in Klammern angezeigt.
 * ACP Modul (Einstellungen):
   * Die Buttons werden gesperrt, wenn eine Aktion nicht möglich ist. Dadurch entfiel die bisherige Fehlermeldung und deren Bestätigung, wenn eine Aktion nicht möglich war.
@@ -33,5 +34,6 @@ Hinweis: Diese Version ist nicht kompatibel mit 1.0.0. Bevor 2.0.0 installiert w
 * Zahlreiche Änderungen in den Sprachdateien sowie etliche neue Sprachvariablen.
 
 #### 1.0.0
+(2022-04-30)
 
 * Erste öffentliche Version

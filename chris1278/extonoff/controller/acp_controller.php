@@ -435,6 +435,6 @@ class acp_controller
 	// Add text to submitted messages and convert special characters to HTML entities
 	private function add_note(string $messages, string $text): string
 	{
-		return $messages . (($messages != '') ? "\n" : '') . sprintf('<p>%s</p>', $text);
+		return $messages . (($messages != '') ? "\n" : '') . sprintf('<p>%s</p>', htmlentities($text));
 	}
 }

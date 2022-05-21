@@ -1,8 +1,6 @@
-Enable/disable extensions completely
+## Enable/disable extensions completely
+Extension for phpBB - With this extension it is possible to deactivate or activate all active extensions at once.
 
-For more Information Read on:
+For more information read on:
 
-https://www.phpbb.de/community/viewtopic.php?t=246200
-
-
-This Extension allowed aktivating or deaktivating of all Extension with one klick on a button.
+[[3.3] Erweiterungen komplett Aktivieren/Deaktivieren](https://www.phpbb.de/community/viewtopic.php?t=246200)
