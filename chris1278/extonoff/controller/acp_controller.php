@@ -175,12 +175,11 @@ class acp_controller
 					'admin',
 					$last_job['user_id'],
 					$last_job['user_ip'],
-					'EXTONOFF_LOG_ENTRY',
+					$last_job['log_lang_var'],
 					$last_job['timestamp'],
 					[
 						$last_job['ext_count_success'],
-						$last_job['ext_count'],
-						$last_job['action_lang']
+						$last_job['ext_count_total'],
 					]
 				);
 			}
@@ -285,9 +284,9 @@ class acp_controller
 			if ($this->config['extonoff_enable_log'])
 			{
 				$this->config_text->set('extonoff_todo_add_log', $this->get_log_json(
+					'EXTONOFF_LOG_EXT_DISABLE_ALL',
 					$ext_count_success,
-					$ext_count_enabled_clean,
-					$this->language->lang('EXTONOFF_LOG_DEACTIVATED')
+					$ext_count_enabled_clean
 				));
 			}
 
@@ -297,7 +296,7 @@ class acp_controller
 		{
 			$ext_list_disabled_clean = $this->remove_exts_with_new_migrations($this->extension_manager->all_disabled());
 
-			$ext_count_disabled = count($ext_list_disabled_clean);
+			$ext_count_disabled_clean = count($ext_list_disabled_clean);
 			$ext_count_success = 0;
 
 			$this->config->set('extonoff_exec_todo', 1);
@@ -327,9 +326,9 @@ class acp_controller
 				if ($this->config['extonoff_enable_log'])
 				{
 					$this->config_text->set('extonoff_todo_add_log', $this->get_log_json(
+						'EXTONOFF_LOG_EXT_ENABLE_ALL',
 						$ext_count_success,
-						$ext_count_disabled,
-						$this->language->lang('EXTONOFF_LOG_ACTIVATED')
+						$ext_count_disabled_clean
 					));
 				}
 			}
@@ -339,7 +338,7 @@ class acp_controller
 				'EXTONOFF_LAST_EXT_DISPLAY_NAME'	=> '',
 			]);
 
-			trigger_error($this->language->lang('EXTONOFF_MSG_ACTIVATION_SUCCESFULL', $ext_count_success, $ext_count_disabled) . adm_back_link($this->u_action), (($ext_count_success == 0) ? E_USER_WARNING : E_USER_NOTICE));
+			trigger_error($this->language->lang('EXTONOFF_MSG_ACTIVATION_SUCCESFULL', $ext_count_success, $ext_count_disabled_clean) . adm_back_link($this->u_action), (($ext_count_success == 0) ? E_USER_WARNING : E_USER_NOTICE));
 		}
 	}
 
@@ -351,7 +350,7 @@ class acp_controller
 			foreach ($ext_list as $ext_name => $value)
 			{
 				$ext_path = $this->extension_manager->get_extension_path($ext_name, true);
-				if ($this->has_migration($ext_name, $ext_path))
+				if ($this->get_migration_files_count($ext_name, $ext_path))
 				{
 					unset($ext_list[$ext_name]);
 				}
@@ -361,8 +360,8 @@ class acp_controller
 		return $ext_list;
 	}
 
-	// Determine if the specified extension has new migrations
-	private function has_migration(string $ext_name, string $ext_path): int
+	// Get the number of new migration files of the specified extension
+	private function get_migration_files_count(string $ext_name, string $ext_path): int
 	{
 		$migrations = $this->extension_manager->get_finder()->extension_directory('/migrations')->find_from_extension($ext_name, $ext_path, false);
 		$migrations_classes = $this->extension_manager->get_finder()->get_classes_from_files($migrations);
@@ -382,10 +381,10 @@ class acp_controller
 		foreach ($ext_list as $ext_name => &$ext_value)
 		{
 			$ext_path = $this->extension_manager->get_extension_path($ext_name, true);
-			$has_migrations	= $this->has_migration($ext_name, $ext_path);
-			if ($has_migrations)
+			$migration_files_count = $this->get_migration_files_count($ext_name, $ext_path);
+			if ($migration_files_count)
 			{
-				$ext_with_migrations_list[$ext_name] = $has_migrations;
+				$ext_with_migrations_list[$ext_name] = $migration_files_count;
 			}
 		}
 
@@ -393,15 +392,15 @@ class acp_controller
 	}
 
 	// Generate a log data package and convert it to JSON
-	private function get_log_json(int $ext_count_success, int $ext_count, string $action_lang): string
+	private function get_log_json(string $log_lang_var, int $ext_count_success, int $ext_count_total): string
 	{
 		return json_encode([
-			'ext_count_success'	=> $ext_count_success,
-			'ext_count'			=> $ext_count,
-			'action_lang'		=> $action_lang,
 			'user_id'			=> $this->user->data['user_id'],
 			'user_ip'			=> $this->user->ip,
+			'log_lang_var'		=> $log_lang_var,
 			'timestamp'			=> time(),
+			'ext_count_success'	=> $ext_count_success,
+			'ext_count_total'	=> $ext_count_total,
 		]);
 	}
 

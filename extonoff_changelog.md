@@ -3,7 +3,7 @@
 
 Danke an Kirk und 69bruno die uns beim testen geholfen haben. :-)
 
-Hinweis: Diese Version ist nicht kompatibel mit 1.0.0. Bevor 2.0.0 installiert werden kann, muss 1.0.0 deinstalliert werden. Dazu im ACP in der Ansicht "ANPASSEN" die Kurzanleitung "EINE ERWEITERUNG KOMPLETT AUS DEM BOARD ENTFERNEN" am Ende der Seite berücksichtigen.
+Hinweis: Diese Version ist nicht Update-kompatibel mit 1.0.0. Bevor 2.0.0 installiert werden kann, muss 1.0.0 deinstalliert werden. Dazu im ACP in der Ansicht "ANPASSEN" die Kurzanleitung "EINE ERWEITERUNG KOMPLETT AUS DEM BOARD ENTFERNEN" am Ende der Seite berücksichtigen.
 
 * Fix: Nach der Reaktivierung funktionierten manche Erweiterungen nicht korrekt, was primär auf deren Template Darstellungen bezogen ist. Die Ursache für das Problem war der Twig Cache, der nicht mehr vollständig aufgebaut wurde. Ein Workaround sorgt nun dafür, dass der gesamte Cache nach Aktivierung/Deaktivierung wieder vollständig aufgebaut wird.
 * Fix: Mehrere kleinere Fehler behoben. Unter anderem fehlte im ACP Modul das Security Token, dass in jedem Formular vorhanden sein muss.
@@ -36,4 +36,4 @@ Hinweis: Diese Version ist nicht kompatibel mit 1.0.0. Bevor 2.0.0 installiert w
 #### 1.0.0
 (2022-04-30)
 
-* Erste öffentliche Version
+* Erste öffentliche Version.

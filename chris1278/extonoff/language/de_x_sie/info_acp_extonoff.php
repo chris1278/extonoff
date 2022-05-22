@@ -37,8 +37,7 @@ if (empty($lang) || !is_array($lang))
 // ’ « » “ ” … „ “
 
 $lang = array_merge($lang, [
-	'EXTONOFF_TITLE'			=> 'Erweiterungen komplett aktivieren/deaktivieren',
-	'EXTONOFF_LOG_ENTRY'		=> '<strong>Erweiterungen komplett aktivieren/deaktivieren</strong><br>» %1$u von %2$u Erweiterungen %3$s',
-	'EXTONOFF_LOG_ACTIVATED'	=> 'aktiviert',
-	'EXTONOFF_LOG_DEACTIVATED'	=> 'deaktiviert',
+	'EXTONOFF_TITLE'				=> 'Erweiterungen komplett aktivieren/deaktivieren',
+	'EXTONOFF_LOG_EXT_ENABLE_ALL'	=> '<strong>Erweiterungen komplett aktivieren/deaktivieren</strong><br>» %1$u von %2$u Erweiterungen aktiviert',
+	'EXTONOFF_LOG_EXT_DISABLE_ALL'	=> '<strong>Erweiterungen komplett aktivieren/deaktivieren</strong><br>» %1$u von %2$u Erweiterungen deaktiviert',
 ]);

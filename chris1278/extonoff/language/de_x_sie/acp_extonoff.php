@@ -44,15 +44,15 @@ $lang = array_merge($lang, [
 
 	// settings head
 	'EXTONOFF_EXPLAIN_1'					=> 'Hier haben Sie die Möglichkeit alle Erweiterungen auf einmal zu deaktivieren bzw. zu aktivieren.',
-	'EXTONOFF_EXPLAIN_2'					=> 'Zusätzlich haben Sie die Möglichkeit auch entsprechend die Buttons direkt in der Ansicht „Erweiterungen verwalten“ anzeigen zu lassen.',
+	'EXTONOFF_EXPLAIN_2'					=> 'Zusätzlich haben Sie die Möglichkeit die Buttons auch direkt in der Ansicht „Erweiterungen verwalten“ anzeigen zu lassen.',
 	'EXTONOFF_EXPLAIN_3'					=> '<strong style="color: red">Achtung:</strong> Es lassen sich nur installierte Erweiterungen aktivieren. Erweiterungen die zwar in der Liste aufgeführt, aber noch nicht installiert sind, werden dabei nicht berücksichtigt.',
 
 	// settings buttons
 	'EXTONOFF_ACTIVATE_OPTION'				=> 'Alle Erweiterungen aktivieren/deaktivieren',
 	'EXTONOFF_DEACTIVATE'					=> 'Alle Erweiterungen deaktivieren',
-	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'Durch drücken des Buttons „Alle deaktivieren“ werden alle aktivierten Erweiterungen deaktiviert, mit Ausnahme der Erweiterung „Enable/disable extensions completely“. Diese müssen Sie manuell deaktivieren.',
+	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'Mit dieser Funktion werden alle aktivierten Erweiterungen deaktiviert, mit Ausnahme der Erweiterung „Enable/disable extensions completely“. Diese müssen Sie manuell deaktivieren.',
 	'EXTONOFF_ACTIVATE'						=> 'Alle Erweiterungen aktivieren',
-	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'Durch drücken des Buttons „Alle aktivieren“ werden alle installierten aber deaktivierten Erweiterungen aktiviert.',
+	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'Mit dieser Funktion werden alle installierten aber deaktivierten Erweiterungen aktiviert.',
 
 	// settings
 	'EXTONOFF_SETTINGS_TITLE'				=> 'Einstellungen',

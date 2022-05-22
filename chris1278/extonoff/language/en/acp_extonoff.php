@@ -44,15 +44,15 @@ $lang = array_merge($lang, [
 
 	// settings head
 	'EXTONOFF_EXPLAIN_1'					=> 'Here you have the option of deactivating or activating all extensions at once.',
-	'EXTONOFF_EXPLAIN_2'					=> 'You also have the option of displaying the buttons directly in the "Manage Extensions" view.',
+	'EXTONOFF_EXPLAIN_2'					=> 'You also have the option of displaying the buttons directly in the "Manage extensions" view.',
 	'EXTONOFF_EXPLAIN_3'					=> '<strong style="color: red">Warning:</strong> Only the extensions that are installed can be activated. Extensions that are in the list but are not yet installed are not taken into account.',
 
 	// settings buttons
 	'EXTONOFF_ACTIVATE_OPTION'				=> 'All Extensions enable/disable',
 	'EXTONOFF_DEACTIVATE'					=> 'Disable all extensions',
-	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'By pressing the button "Disable all", all activated extensions will be deactivated execept for the extension "Enable /disable extensions completely". You have to deactivate them manually.',
+	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'This feature will disable all enabled extensions except for the "Enable/disable extensions completely" extension. You have to disable them manually.',
 	'EXTONOFF_ACTIVATE'						=> 'Enable all extensions',
-	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'By pressing the "Enable all" button, all installed but deactivated extensions will be activated.',
+	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'This feature will enable all installed but disabled extensions.',
 
 	// settings
 	'EXTONOFF_SETTINGS_TITLE'				=> 'Settings',
