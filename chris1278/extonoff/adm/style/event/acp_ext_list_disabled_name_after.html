@@ -1,0 +1,3 @@
+{% if EXTONOFF_INTEGRATION && disabled.NAME in EXTONOFF_MIGRATION_EXTS|keys %}
+	<span class="extonoff_migration_icon" title="{{ lang('EXTONOFF_TOOLTIP_HAS_MIGRATION')|e('html') }}">({{ EXTONOFF_MIGRATION_EXTS[disabled.NAME] }}) </span>
+{% endif %}

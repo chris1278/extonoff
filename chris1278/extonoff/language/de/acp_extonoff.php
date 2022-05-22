@@ -3,7 +3,7 @@
 *
 * Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2022, Chris1278
+* @copyright (c) 2022, Chris1278 & LukeWCS
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -32,23 +32,68 @@ if (empty($lang) || !is_array($lang))
 // You do not need this where single placeholders are used, e.g. 'Message %d' is fine
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
+//
+// Some characters you may want to copy&paste:
+// ’ « » “ ” … „ “
 
 $lang = array_merge($lang, [
-	'EXTONOFF_EXPLAIN'										=> 'Hier hast du die Möglichkeit alle Erweiterungen auf einmal zu deaktivieren bzw. zu aktivieren.<br><br>Hier kannst du alle Erweiterungen die Aktiviert sind mittels der Buttons entweder alle aktivieren oder alle deaktivieren.<br><br>Zusätzlich hast du die Möglichkeit dir auch entsprechend die Buttons direkt in der Ansicht <b>"Erweiterungen verwalten"</b> anzeigen zu lassen und diese dort zu nutzen.<br><br><b style="color: red">Achtung:</b>  Es lassen sich nur die Erweiterungen die auch installiert sind aktivieren bzw. deaktivieren. Die Erweiterungen die zwar in der Liste sind, aber noch nicht installiert sind, werden dadurch nicht berücksichtigt.',
-	'EXTONOFF_ACTIVATE_OPTION'								=> 'Alle Erweiterungen "Aktivieren/Deaktiveren"',
-	'EXTONOFF_ACTIVATE'										=> 'Alle Erweiterungen aktivieren',
-	'EXTONOFF_ACTIVATE_EXPLAIN'								=> 'Durch drücken des Buttons <b>"Alle Erweiterungen aktivieren"</b> werden alle installierten aber deaktivierten Erweiterungen aktiviert.',
-	'EXTONOFF_ALL_ACTIVATE'									=> 'Alle Erweiterungen aktivieren',
-	'EXTONOFF_ACTIVATION_SUCCESFULL'						=> 'Die Erweiterungen wurden alle erfolgreich aktiviert.',
-	'EXTONOFF_ACTIVATION_SUCCESFULL_INFO'					=> 'Die Erweiterungen sind schon alle aktiviert. Eine nochmalige Aktivierung ist nicht notwendig.',
-	'EXTONOFF_DEACTIVATE'									=> 'Alle Erweiterungen deaktivieren',
-	'EXTONOFF_DEACTIVATE_EXPLAIN'							=> 'Durch drücken des Buttons <b>"Alle Erweiterungen deaktivieren"</b> werden alle Erweiterungen die installiert und aktiviert sind deaktiviert.<br><br><b>Zusatz-Information:</B> Die Erweiterung <b>"Enable/disable extensions completely"</b> bleibt dabei aktiviert. Diese musst du dann manuell deaktivieren.',
-	'EXTONOFF_ALL_DEACTIVATE'								=> 'Alle Erweiterungen deaktivieren',
-	'EXTONOFF_DEACTIVATION_SUCCESFULL'						=> 'Alle Aktiven Erweiterungen wurden erfolgreich deaktiviert.',
-	'EXTONOFF_DEACTIVATION_SUCCESFULL_INFO'					=> 'Die Erweiterungen sind schon alle deaktiviert. Eine nochmalige Deaktivierung ist nicht notwendig.',
-	'EXTONOFF_DEACTIVATION_INFO'							=> 'Es können von insgesammt <b>%2$s</b> aktiven Erweiterungen <b>%1$s</b> Erweiterungen mittels dieser Erweiterung deaktiviert werden.',
-	'EXTONOFF_EXTRA_BUTTONS'								=> 'Zusatz Buttons in der Ansicht "Erweiterungen verwalten"',
-	'CHRIS1278_EXTONOFF'									=> 'Zusatz-Buttons aktivieren',
-	'CHRIS1278_EXTONOFF_EXPLAIN'							=> 'Wenn du diese Option aktivierst werden in der Ansicht <b>"Erweiterungen verwalten"</b> ebenfalls Buttons eingeblendet mit denen du dort auch alle Erweiterungen aktiveren bzw. deaktivieren kannst.',
-	'ACP_EXTONOFF_SETTING_SAVED'							=> 'Einstellungen erfolgreich gespeichert.',
+	// language pack author
+	'EXTONOFF_LANG_DESC'					=> 'Deutsch (Du)',
+	'EXTONOFF_LANG_EXT_VER' 				=> '2.0.0',
+	'EXTONOFF_LANG_AUTHOR' 					=> 'chris1278 & LukeWCS',
+
+	// settings head
+	'EXTONOFF_EXPLAIN_1'					=> 'Hier hast du die Möglichkeit alle Erweiterungen auf einmal zu deaktivieren bzw. zu aktivieren.',
+	'EXTONOFF_EXPLAIN_2'					=> 'Zusätzlich hast du die Möglichkeit die Buttons auch direkt in der Ansicht „Erweiterungen verwalten“ anzeigen zu lassen.',
+	'EXTONOFF_EXPLAIN_3'					=> '<strong style="color: red">Achtung:</strong> Es lassen sich nur installierte Erweiterungen aktivieren. Erweiterungen die zwar in der Liste aufgeführt, aber noch nicht installiert sind, werden dabei nicht berücksichtigt.',
+
+	// settings buttons
+	'EXTONOFF_ACTIVATE_OPTION'				=> 'Alle Erweiterungen aktivieren/deaktivieren',
+	'EXTONOFF_DEACTIVATE'					=> 'Alle Erweiterungen deaktivieren',
+	'EXTONOFF_DEACTIVATE_EXPLAIN'			=> 'Mit dieser Funktion werden alle aktivierten Erweiterungen deaktiviert, mit Ausnahme der Erweiterung „Enable/disable extensions completely“. Diese musst du manuell deaktivieren.',
+	'EXTONOFF_ACTIVATE'						=> 'Alle Erweiterungen aktivieren',
+	'EXTONOFF_ACTIVATE_EXPLAIN'				=> 'Mit dieser Funktion werden alle installierten aber deaktivierten Erweiterungen aktiviert.',
+
+	// settings
+	'EXTONOFF_SETTINGS_TITLE'				=> 'Einstellungen',
+	'EXTONOFF_INTEGRATION'					=> 'Integration in „Erweiterungen verwalten“',
+	'EXTONOFF_INTEGRATION_EXPLAIN'			=> 'Wenn du diese Option aktivierst, werden in der Ansicht „Erweiterungen verwalten“ ebenfalls Buttons eingeblendet, mit denen du auch dort alle Erweiterungen aktiveren bzw. deaktivieren kannst. Zusätzlich wird die Anzahl der aktivierten, deaktivierten und nicht installierten Erweiterungen angezeigt, sowie die Anzahl der Erweiterungen mit neuen Migrationsdateien.',
+	'EXTONOFF_LOG'							=> 'Log-Eintrag',
+	'EXTONOFF_LOG_EXPLAIN'					=> 'Hier kannst du festlegen, ob bei den Aktionen „Alle aktivieren“ und „Alle deaktivieren“ ein Eintrag im Administrator-Log hinzugefügt werden soll.',
+	'EXTONOFF_CONFIRMATION'					=> 'Rückfrage',
+	'EXTONOFF_CONFIRMATION_EXPLAIN'			=> 'Hier kannst du festlegen, ob bei den Aktionen „Alle aktivieren“ und „Alle deaktivieren“ eine Rückfrage erfolgen soll, die bestätigt werden muss.',
+
+	// settings expert
+	'EXTONOFF_EXPERT_SETTINGS_TITLE'		=> 'Experten-Einstellungen',
+	'EXTONOFF_MIGRATIONS'					=> 'Erlaube Migrationen',
+	'EXTONOFF_MIGRATIONS_EXPLAIN'			=> 'Wenn du diese Option aktivierst, dann können bei der Aktion „Alle aktivieren“ auch diejenigen Erweiterungen aktiviert werden, bei denen neue Migrationsdateien vorliegen. Das trifft auf aktualisierte Erweiterungen zu, die einen Ordner „migrations“ enthalten. Ohne diese Option müssen solche Erweiterungen manuell aktiviert werden, was empfohlen wird.',
+
+	// ext manager
+	'EXTONOFF_ALL_DISABLE'					=> 'Alle deaktivieren',
+	'EXTONOFF_ALL_ENABLE'					=> 'Alle aktivieren',
+	'EXTONOFF_INSTALLED'					=> 'installiert',
+	'EXTONOFF_NOT_INSTALLED'				=> 'nicht installiert',
+	'EXTONOFF_HAS_MIGRATION'				=> 'neue Migrationen',
+
+	// misc
+	'EXTONOFF_DEFAULT'						=> 'Standard',
+	'EXTONOFF_EXTENSION_PLURAL'				=> [
+		0 => "0 Erweiterungen",
+		1 => "%u Erweiterung",
+		2 => "%u Erweiterungen",
+	],
+
+	// tooltips
+	'EXTONOFF_TOOLTIP_HAS_MIGRATION'		=> 'Diese Erweiterung hat neue Migrationsdateien, die beim aktivieren der Erweiterung übernommen werden.',
+	'EXTONOFF_TOOLTIP_BUTTON_DISABLE'		=> '%s deaktivieren.',
+	'EXTONOFF_TOOLTIP_BUTTON_ENABLE'		=> '%s aktivieren.',
+
+	// messages
+	'EXTONOFF_MSG_CONFIRM_DISABLE'			=> 'Bist du dir sicher, dass du %s deaktivieren möchtest?',
+	'EXTONOFF_MSG_CONFIRM_ENABLE'			=> 'Bist du dir sicher, dass du %s aktivieren möchtest?',
+	'EXTONOFF_MSG_SETTINGS_SAVED'			=> 'ExtOnOff: Einstellungen erfolgreich gespeichert.',
+	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'ExtOnOff: Der Vorgang „Alle aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
+	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> 'ExtOnOff: %1$u von %2$u aktivierten Erweiterungen wurden deaktiviert.',
+	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> 'ExtOnOff: %1$u von %2$u deaktivierten Erweiterungen wurden aktiviert.',
+	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Hinweis: Das Sprachpaket dieser Erweiterung ist nicht mehr aktuell. (Vorhanden: %1$s / Benötigt: %2$s)',
 ]);

@@ -1,11 +1,4 @@
-/**
-*
-* Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
-*
-* @copyright (c) 2022, Chris1278
-* @license GNU General Public License, version 2 (GPL-2.0)
-*
-*/
+/* ACP module */
 
 fieldset {
 	border-radius: 10px;
@@ -20,12 +13,14 @@ legend {
 	padding: 2px 10px;
 	top: 0;
 }
+
 @media (max-width: 700px){
 	legend {
 		margin: 2px 0px 0px -6px;
 		padding: 2px 5px;
 	}
 }
+
 label input.button1 {
 	border-radius: 5px;
 	padding: 5px;
@@ -33,10 +28,41 @@ label input.button1 {
 	margin-top: .9em;
 }
 
-#extoff_infobox {
+input[type="submit"]:disabled {
+	opacity: .4;
+	cursor: not-allowed;
+}
+
+.extonoff_default {
+	margin-top: 1em;
+	font-size: .9em;
+}
+
+.extonoff_footer {
+	margin-top: 1em;
 	text-align: center;
-	background-color: #ffffff;
-	border: 1px solid #D7D7D7;
-	border-radius: 10px;
-	padding: 5px;
+	font-size: .75em;
+}
+
+/* Ext manager */
+
+#extonoff_button_enable,
+#extonoff_button_disable {
+	float: right;
+}
+
+.extonoff_migration_icon {
+	float: right;
+	cursor: help;
+}
+
+.extonoff_migration_icon:after {
+	font-family: FontAwesome;
+	content: "\f062";
+}
+
+/* Confirm box */
+
+#confirm h2 {
+	margin-bottom: .25em;
 }

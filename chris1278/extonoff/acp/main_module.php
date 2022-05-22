@@ -3,7 +3,7 @@
 *
 * Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2022, Chris1278
+* @copyright (c) 2022, Chris1278 & LukeWCS
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -28,8 +28,6 @@ class main_module
 
 		$this->page_title = $language->lang('EXTONOFF_TITLE');
 
-		$acp_controller->display_options();
-
-		$acp_controller->set_page_url($this->u_action);
+		$acp_controller->acp_module($this->u_action);
 	}
 }

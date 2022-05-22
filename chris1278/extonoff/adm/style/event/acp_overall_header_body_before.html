@@ -1,0 +1,16 @@
+{% if EXTONOFF_LAST_EXT_NAME %}
+	{% set extonoff_last_ext_msg = lang('EXTONOFF_MSG_ACTIVATION_ABORTED') ~ '<br><br><strong>' ~ EXTONOFF_LAST_EXT_DISPLAY_NAME ~ ' (' ~ EXTONOFF_LAST_EXT_NAME ~ ')</strong>' %}
+	<noscript>
+		<div class="errorbox">
+			{{ extonoff_last_ext_msg }}
+		</div>
+	</noscript>
+	<script>
+		var ExtOnOff = {
+			TemplateVars: {
+				LastExtMsg: '{{ extonoff_last_ext_msg }}' + '<br><br>',
+			}
+		};
+	</script>
+	{% INCLUDEJS 'js/acp_extonoff.js' %}
+{% endif %}

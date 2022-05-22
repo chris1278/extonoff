@@ -3,7 +3,7 @@
 *
 * Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2022, Chris1278
+* @copyright (c) 2022, Chris1278 & LukeWCS
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -32,9 +32,12 @@ if (empty($lang) || !is_array($lang))
 // You do not need this where single placeholders are used, e.g. 'Message %d' is fine
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
+//
+// Some characters you may want to copy&paste:
+// ’ « » “ ” … „ “
 
 $lang = array_merge($lang, [
-	'EXTONOFF_TITLE'										=> 'Enable/Disable Extensions Completely',
-	'LOG_ACP_EXTONOFF_ACTIVATED'							=> '<strong>"Enable/disable extensions completely"</strong><br />» All extensions activated',
-	'LOG_ACP_EXTONOFF_DEACTIVATED'							=> '<strong>"Enable/disable extensions completely"</strong><br />» All extensions disabled',
+	'EXTONOFF_TITLE'				=> 'Enable/disable extensions completely',
+	'EXTONOFF_LOG_EXT_ENABLE_ALL'	=> '<strong>Enable/disable extensions completely</strong><br>» %1$u of %2$u extensions enabled',
+	'EXTONOFF_LOG_EXT_DISABLE_ALL'	=> '<strong>Enable/disable extensions completely</strong><br>» %1$u of %2$u extensions disabled',
 ]);

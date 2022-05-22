@@ -3,7 +3,7 @@
 *
 * Enable/disable extensions completely from Chris1278. An extension for the phpBB Forum Software package.
 *
-* @copyright (c) 2022, Chris1278
+* @copyright (c) 2022, Chris1278 & LukeWCS
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
@@ -14,83 +14,28 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class acp_listener implements EventSubscriberInterface
 {
-	protected $extension_manager;
-	protected $template;
-	protected $language;
-	protected $config;
-	protected $log;
-	protected $user;
-	protected $u_action;
-
 	public function __construct(
-		\phpbb\extension\manager $extension_manager,
-		\phpbb\template\template $template,
-		\phpbb\language\language $language,
-		\phpbb\config\config $config,
-		\phpbb\log\log $log,
-		\phpbb\user $user
+		\chris1278\extonoff\controller\acp_controller $extonoff
 	)
 	{
-		$this->extension_manager 	= $extension_manager;
-		$this->template 			= $template;
-		$this->language				= $language;
-		$this->config				= $config;
-		$this->log					= $log;
-		$this->user					= $user;
-		$this->language->add_lang('acp_extonoff', 'chris1278/extonoff');
+		$this->extonoff	= $extonoff;
 	}
 
 	public static function getSubscribedEvents()
 	{
-		return array(
-			'core.acp_extensions_run_action_before'	=> 'extonoff_run',
-		);
+		return [
+			'core.common'							=> 'todo',
+			'core.acp_extensions_run_action_before'	=> 'ext_manager',
+		];
 	}
 
-	public function extonoff_run($event)
+	public function todo()
 	{
-		$this->template->assign_vars([
-			'EXTONOFF_LISTNER_BUTTONS'		=> $this->config['chris1278_extonoff'],
-			'DISABLE_EXTONOFF'				=> ($event['u_action'] . '&action=disable-all'),
-			'ACTIVATE_EXTONOFF'				=> ($event['u_action'] . '&action=activate-all'),
-		]);
+		$this->extonoff->todo();
+	}
 
-		if ($event['action'] == 'disable-all')
-		{
-			$extoff_safe_time_limit = (ini_get('max_execution_time') / 2);
-			$extoff_start_time = time();
-			$extoff_enabled_extensions = $this->extension_manager->all_enabled();
-			unset($extoff_enabled_extensions['chris1278/extonoff']);
-			foreach ($extoff_enabled_extensions as $ext_name => $value)
-			{
-				while ($this->extension_manager->disable_step($ext_name))
-				{
-					if ((time() - $extoff_start_time) >= $extoff_safe_time_limit)
-					{
-						meta_refresh(0, $this->u_action . '&amp;action=disable-all');
-					}
-				}
-			}
-			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_ACP_EXTONOFF_DEACTIVATED');
-		}
-
-		if ($event['action'] == 'activate-all')
-		{
-			$exton_safe_time_limit = (ini_get('max_execution_time') / 2);
-			$exton_start_time = time();
-			$exton_enabled_extensions = $this->extension_manager->all_disabled();
-			unset($exton_enabled_extensions['chris1278/extonoff']);
-			foreach ($exton_enabled_extensions as $ext_name => $value)
-			{
-				while ($this->extension_manager->enable_step($ext_name))
-				{
-					if ((time() - $exton_start_time) >= $exton_safe_time_limit)
-					{
-						meta_refresh(0, $this->u_action . '&amp;action=activate-all');
-					}
-				}
-			}
-			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'LOG_ACP_EXTONOFF_ACTIVATED');
-		}
+	public function ext_manager($event)
+	{
+		$this->extonoff->ext_manager($event);
 	}
 }

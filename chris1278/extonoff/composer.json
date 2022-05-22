@@ -1,10 +1,10 @@
 {
 	"name": "chris1278/extonoff",
 	"type": "phpbb-extension",
-	"description": "With this extension it is possible to deactivate or activate all active extensions at once.",
+	"description": "With this extension it is possible to deactivate or activate all installed extensions at once.",
 	"homepage": "https://www.phpbb.de/community/viewtopic.php?f=149&t=242009",
-	"version": "1.0.0",
-	"time": "2022-04-23",
+	"version": "2.0.0",
+	"time": "2022-05-22",
 	"license": "GPL-2.0-only",
 	"authors": [
 		{
@@ -12,18 +12,23 @@
 			"email": "smilie-man@gmx.de",
 			"homepage": "https://www.phpbb.de/community/memberlist.php?mode=viewprofile&u=87861",
 			"role": "Developer"
+		},
+		{
+			"name": "LukeWCS",
+			"homepage": "https://www.wcsaga.org",
+			"role": "Developer"
 		}
 	],
 	"require": {
-		"php": ">=7.0.0,<8.1.0",
-		"phpbb/phpbb": ">=3.2.7,<3.4.0@dev",
+		"php": ">=7.0.0,<8.2.0",
+		"phpbb/phpbb": ">=3.2.11,<3.4.0@dev",
 		"composer/installers": "~1.0.0"
 	},
 	"extra": {
 		"display-name": "Enable/disable extensions completely",
-			"lang-min-ver": "1.0.0",
+		"lang-min-ver": "2.0.0",
 			"soft-require": {
-			"phpbb/phpbb": ">=3.2.7,<3.4.0@dev"
+			"phpbb/phpbb": ">=3.2.11,<3.4.0@dev"
 		},
 		"version-check": {
 			"host": "raw.githubusercontent.com",

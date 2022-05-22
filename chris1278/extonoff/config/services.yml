@@ -6,19 +6,15 @@ services:
             - '@request'
             - '@language'
             - '@config'
+            - '@config_text'
             - '@template'
-            - '@dbal.conn'
             - '@log'
             - '@user'
+            - '@cache.driver'
+            - '@migrator'
     chris1278.extonoff.listener:
         class: chris1278\extonoff\event\acp_listener
         arguments:
-            - '@ext.manager'
-            - '@template'
-            - '@language'
-            - '@config'
-            - '@log'
-            - '@user'
+            - '@chris1278.extonoff.controller.acp'
         tags:
             - { name: event.listener }
-           
