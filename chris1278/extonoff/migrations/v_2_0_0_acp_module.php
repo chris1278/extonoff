@@ -14,7 +14,7 @@ class v_2_0_0_acp_module extends \phpbb\db\migration\migration
 {
 	public static function depends_on()
 	{
-		return ['\phpbb\db\migration\data\v32x\v3211'];
+		return ['\phpbb\db\migration\data\v32x\v329'];
 	}
 
 	public function update_data()

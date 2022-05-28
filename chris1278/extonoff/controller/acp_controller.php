@@ -51,7 +51,7 @@ class acp_controller
 
 	public function ext_manager($event)
 	{
-		if (!$this->config['extonoff_enable_integration'])
+		if ($event['action'] != 'list' || !$this->config['extonoff_enable_integration'])
 		{
 			return;
 		}
@@ -208,7 +208,7 @@ class acp_controller
 							'extonoff_confirm_box' => true,
 							'u_action' => $this->u_action
 						]),
-						'@chris1278_extonoff/acp_extonoff_confirm.html'
+						'@chris1278_extonoff/acp_extonoff_confirm_body.html'
 					);
 				}
 			}
@@ -237,7 +237,7 @@ class acp_controller
 							'extonoff_confirm_box' => true,
 							'u_action' => $this->u_action
 						]),
-						'@chris1278_extonoff/acp_extonoff_confirm.html'
+						'@chris1278_extonoff/acp_extonoff_confirm_body.html'
 					);
 				}
 			}
@@ -360,19 +360,6 @@ class acp_controller
 		return $ext_list;
 	}
 
-	// Get the number of new migration files of the specified extension
-	private function get_migration_files_count(string $ext_name, string $ext_path): int
-	{
-		$migrations = $this->extension_manager->get_finder()->extension_directory('/migrations')->find_from_extension($ext_name, $ext_path, false);
-		$migrations_classes = $this->extension_manager->get_finder()->get_classes_from_files($migrations);
-
-		$this->migrator->set_migrations($migrations_classes);
-		$migrations = $this->migrator->get_installable_migrations();
-		$this->migrator->set_migrations([]);
-
-		return count($migrations);
-	}
-
 	// Determine all extensions that have new migrations from the passed list of extensions
 	private function get_exts_with_new_migration(array $ext_list): array
 	{
@@ -389,6 +376,19 @@ class acp_controller
 		}
 
 		return $ext_with_migrations_list;
+	}
+
+	// Get the number of new migration files of the specified extension
+	private function get_migration_files_count(string $ext_name, string $ext_path): int
+	{
+		$migrations = $this->extension_manager->get_finder()->extension_directory('/migrations')->find_from_extension($ext_name, $ext_path, false);
+		$migrations_classes = $this->extension_manager->get_finder()->get_classes_from_files($migrations);
+
+		$this->migrator->set_migrations($migrations_classes);
+		$migrations = $this->migrator->get_installable_migrations();
+		$this->migrator->set_migrations([]);
+
+		return count($migrations);
 	}
 
 	// Generate a log data package and convert it to JSON
