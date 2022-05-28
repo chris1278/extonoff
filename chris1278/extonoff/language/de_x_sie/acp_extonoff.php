@@ -95,5 +95,5 @@ $lang = array_merge($lang, [
 	'EXTONOFF_MSG_ACTIVATION_ABORTED'		=> 'ExtOnOff: Der Vorgang „Alle aktivieren“ wurde unterbrochen, da die folgende Erweiterung nicht aktiviert werden konnte:',
 	'EXTONOFF_MSG_DEACTIVATION_SUCCESFULL'	=> 'ExtOnOff: %1$u von %2$u aktivierten Erweiterungen wurden deaktiviert.',
 	'EXTONOFF_MSG_ACTIVATION_SUCCESFULL'	=> 'ExtOnOff: %1$u von %2$u deaktivierten Erweiterungen wurden aktiviert.',
-	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Hinweis: Das Sprachpaket dieser Erweiterung ist nicht mehr aktuell. (Vorhanden: %1$s / Benötigt: %2$s)',
+	'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED'	=> 'Hinweis: Das Sprachpaket der Erweiterung <strong>%1$s</strong> ist nicht mehr aktuell. (vorhanden: %2$s / benötigt: %3$s)',
 ]);

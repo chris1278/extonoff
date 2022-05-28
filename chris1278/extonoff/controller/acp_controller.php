@@ -133,7 +133,7 @@ class acp_controller
 		$ext_lang_min_ver	= $this->md_manager->get_metadata()['extra']['lang-min-ver'];
 		$ext_lang_ver 		= $this->get_lang_ver('EXTONOFF_LANG_EXT_VER');
 
-		$lang_outdated_msg	= $this->check_lang_ver($ext_lang_min_ver, $ext_lang_ver, 'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED');
+		$lang_outdated_msg	= $this->check_lang_ver($ext_display_name, $ext_lang_ver, $ext_lang_min_ver, 'EXTONOFF_MSG_LANGUAGEPACK_OUTDATED');
 		$notes				= ($lang_outdated_msg) ? $this->add_note($notes, $lang_outdated_msg) : '';
 
 		$this->template->assign_vars([
@@ -407,15 +407,15 @@ class acp_controller
 	// Determine the version of the language pack with fallback to 0.0.0
 	private function get_lang_ver(string $lang_ext_ver): string
 	{
-		return $this->language->is_set($lang_ext_ver) ? $this->language->lang($lang_ext_ver) : '0.0.0';
+		return $this->language->is_set($lang_ext_ver) ? preg_replace('/[^0-9.]/', '', $this->language->lang($lang_ext_ver)) : '0.0.0';
 	}
 
 	// Check the language pack version for the minimum version and generate notice if outdated
-	private function check_lang_ver(string $ext_lang_min_ver, string $ext_lang_ver, string $lang_outdated_var): string
+	private function check_lang_ver(string $ext_name, string $ext_lang_ver, string $ext_lang_min_ver, string $lang_outdated_var): string
 	{
 		$lang_outdated_msg = '';
 
-		if (phpbb_version_compare($ext_lang_min_ver, $ext_lang_ver, '>'))
+		if (phpbb_version_compare($ext_lang_ver, $ext_lang_min_ver, '<'))
 		{
 			if ($this->language->is_set($lang_outdated_var))
 			{
@@ -425,15 +425,15 @@ class acp_controller
 			{
 				$lang_outdated_msg = 'Note: The language pack for this extension is no longer up-to-date. (Installed: %1$s / Needed: %2$s)';
 			}
-			$lang_outdated_msg = sprintf($lang_outdated_msg, $ext_lang_ver, $ext_lang_min_ver);
+			$lang_outdated_msg = sprintf($lang_outdated_msg, $ext_name, $ext_lang_ver, $ext_lang_min_ver);
 		}
 
 		return $lang_outdated_msg;
 	}
 
-	// Add text to submitted messages and convert special characters to HTML entities
+	// Add text to submitted messages
 	private function add_note(string $messages, string $text): string
 	{
-		return $messages . (($messages != '') ? "\n" : '') . sprintf('<p>%s</p>', htmlentities($text));
+		return $messages . (($messages != '') ? "\n" : '') . sprintf('<p>%s</p>', $text);
 	}
 }

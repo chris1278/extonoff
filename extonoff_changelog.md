@@ -1,8 +1,9 @@
 #### 2.0.1
-(2022--)
+(2022-05-28)
 
 * Fix: Ein falscher Migrationspfad (Abhängigkeiten) hätte eine Installation unter phpBB 3.3.0 und 3.3.1 verhindert, obwohl ExtOnOff dafür freigegeben ist. Aufgefallen bei einem Test mit 3.3.0.
 * Code Optimierung: Bislang wurde die ExtMgr Integration unnötigerweise auch bei den Aktionen "Aktivieren", "Deaktivieren", "Details", "Arbeitsdaten löschen" und "Einstellungen -> Absenden" ausgeführt. Die Integration wird jetzt nur noch ausgeführt, wenn im ExtMgr die Aktion `list` ausgeführt wird.
+* Von Extension Manager Plus aktuelle Änderungen des Sprachpaket-Infosystems übernommen.
 
 #### 2.0.0
 (2022-05-22)
