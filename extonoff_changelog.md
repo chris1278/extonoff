@@ -1,3 +1,8 @@
+#### 2.0.2
+(2022-08-10)
+
+* Fix: Es wurde der Fehler behoben das bei aktivierter erweiterung "Erweiterungen komplett Aktivieren/Deaktivieren" die Funktion "Berechtigung des Benutzers testen" einen Fehler verursacht hat. Dies bezog sich auf diese Erweiterung da die Migrator Klasse falsch eingebunden war. Fehler behoben
+
 #### 2.0.1
 (2022-05-28)
 
