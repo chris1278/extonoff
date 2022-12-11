@@ -1,7 +1,7 @@
 {
 	"stable": {
 		"2.0": {
-			"current": "2.0.1",
+			"current": "2.0.2",
 			"announcement": "https://www.phpbb.de/community/viewtopic.php?t=246200",
 			"eol": null,
 			"security": false
